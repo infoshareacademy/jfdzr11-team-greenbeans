@@ -1,9 +1,11 @@
 import styles from "./Authentication.module.css";
-// import useAuth from "../../context/setAuth";
+import useAuth from "../../context/AuthContext";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
-	// const { register } = useAuth();
+	const navigate = useNavigate();
+	const { register } = useAuth();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -15,8 +17,13 @@ export const Register = () => {
 		if (password !== password_confirm) {
 			toast.error("Password must be confirmed");
 		} else {
-			// await register(email, password);
-			toast.success("Successfully regstered");
+			try {
+				await register(email, password);
+				navigate("/");
+				toast.success("Sucessfully registered");
+			} catch (error) {
+				toast.error(error.code);
+			}
 			event.target.reset();
 		}
 	};
