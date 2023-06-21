@@ -1,6 +1,6 @@
 import styles from "./Authentication.module.css";
-import useAuth from "../../context/AuthContext";
 import { toast } from "react-hot-toast";
+import useAuth from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
@@ -15,7 +15,7 @@ export const Register = () => {
 		const password_confirm = event.target?.password_confirm.value;
 
 		if (password !== password_confirm) {
-			toast.error("Password must be confirmed");
+			toast.error("Passwords must match");
 		} else {
 			try {
 				await register(email, password);

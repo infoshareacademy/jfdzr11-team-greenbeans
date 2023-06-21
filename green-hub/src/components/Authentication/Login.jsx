@@ -6,11 +6,11 @@ import { Link, Navigate } from "react-router-dom";
 export const Login = () => {
 	const { login, currentUser } = useAuth();
 
-	const handleSubmit = async (formEvent) => {
-		formEvent.preventDefault();
+	const handleSubmit = async (event) => {
+		event.preventDefault();
 
-		const email = formEvent.target?.email.value;
-		const password = formEvent.target?.password.value;
+		const email = event.target?.email.value;
+		const password = event.target?.password.value;
 
 		try {
 			await login(email, password);
@@ -41,6 +41,7 @@ export const Login = () => {
 							id="password"
 							required
 						/>
+						<button type="submit">Login</button>
 						<p>
 							You do not have an account yet?
 							<Link to="/register">Register now!</Link>
