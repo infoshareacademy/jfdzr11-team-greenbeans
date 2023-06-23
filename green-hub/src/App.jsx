@@ -1,7 +1,13 @@
 import "./App.css";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-	return <h1>Welcome to GreenHub</h1>;
+  return (
+    <>
+      <Toaster />
+      <h1> Welcome to GreenHub</h1>
+    </>
+  );
 }
 
 export default App;
