@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-export const Register = () => {
+const Register = () => {
 	const navigate = useNavigate();
 	const { register } = useAuth();
 
@@ -60,3 +60,5 @@ export const Register = () => {
 		</div>
 	);
 };
+
+export default Register;
