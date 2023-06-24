@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "./Articles.module.css";
-import { Routes, Route } from "react-router-dom";
+import React from 'react'
+import styles from './Articles.module.css'
 
-
-export const Articles = () => {
+const Articles = () => {
   return (
-    <div>Articles</div>
+    <div className={styles.articles}>
+        Articles
+    </div>
   )
 }
-  
 
+export default Articles
