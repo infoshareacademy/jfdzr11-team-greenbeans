@@ -25,7 +25,7 @@ const Login = () => {
 				<div className={styles.auth_container}>
 					<form
 						onSubmit={handleSubmit}
-						className={styles.form}
+						className={styles.auth_form}
 					>
 						<label htmlFor="email">E-mail</label>
 						<input
@@ -55,4 +55,4 @@ const Login = () => {
 	);
 };
 
-export default Login
+export default Login;
