@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 import styles from "./App.module.css";
 import { Ideas } from "./components";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 	return (
@@ -11,6 +11,10 @@ function App() {
 
 			<h1>Welcome to GreenHub</h1>
 			<Routes>
+				<Route
+					path="/"
+					element={<Home />}
+				></Route>
 				<Route
 					path="/newideas"
 					element={<Ideas />}
