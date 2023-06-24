@@ -1,0 +1,67 @@
+.ideas {
+    width: 100%;
+    display: grid;
+}
+
+.ideas main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ideas h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 50%;
+}
+
+.ideas main p {
+    padding: 1rem;
+    max-width: 40rem;
+    font-size: 1rem;
+}
+
+.ideas h1 + p {
+    text-align: right;
+}
+
+.ideas input {
+    border: none;
+    width: 30rem;
+    height: 7rem;
+}
+
+.ideas textarea {
+    border: none;
+    width: 30rem;
+    height: 7rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #D9D9D9;
+    resize: none;
+}
+
+.ideas form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ideas form button {
+    align-self:flex-end;
+    width: 7rem;
+    margin: 1rem 0 4rem 0;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #8EA38A;
+    color: white;
+}
+
+.ideas form button:hover {
+    cursor: pointer;
+    background-color: hsla(0, 0%, 85%, 0.5);
+    color:#8EA38A;
+}
