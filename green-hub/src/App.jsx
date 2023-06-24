@@ -1,18 +1,20 @@
 import { Toaster } from "react-hot-toast";
-import styles from "./App.module.css"
+import styles from "./App.module.css";
 import { Ideas } from "./components";
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
-		<>
-			<Toaster />
-			
-	<h1>Welcome to GreenHub</h1>
-	<Routes>
-		  <Route path="/newideas" element={<Ideas/>}></Route>
-    </Routes>
-		</>
+    <>
+      <Toaster />
+
+      <h1>Welcome to GreenHub</h1>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/newideas" element={<Ideas />}></Route>
+      </Routes>
+    </>
   );
 }
 
