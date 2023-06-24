@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 import { Link, Navigate } from "react-router-dom";
 
-export const Login = () => {
+const Login = () => {
 	const { login, currentUser } = useAuth();
 
 	const handleSubmit = async (event) => {
@@ -54,3 +54,5 @@ export const Login = () => {
 		</>
 	);
 };
+
+export default Login
