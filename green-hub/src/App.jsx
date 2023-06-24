@@ -1,6 +1,11 @@
-import { Toaster } from "react-hot-toast";
-import styles from "./App.module.css";
-import { Ideas } from "./components";
+import {
+	Articles,
+	Login,
+	Register,
+	GetPoints,
+	Ideas,
+	Home,
+} from "./components";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
@@ -18,6 +23,23 @@ function App() {
 				<Route
 					path="/newideas"
 					element={<Ideas />}
+				></Route>
+				<Route
+					path="/login"
+					element={<Login />}
+				></Route>
+				<Route
+					path="/register"
+					element={<Register />}
+				></Route>
+				<Route
+					path="/getpoints"
+					element={<GetPoints />}
+				></Route>
+
+				<Route
+					path="/articles"
+					element={<Articles />}
 				></Route>
 			</Routes>
 		</>
