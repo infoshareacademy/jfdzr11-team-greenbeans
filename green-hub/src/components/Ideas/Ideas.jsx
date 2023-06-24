@@ -5,12 +5,9 @@ import {
   Timestamp,
   addDoc,
   collection,
-  doc,
-  deleteDoc,
   orderBy,
   onSnapshot,
   query,
-  updateDoc,
 } from "firebase/firestore";
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
@@ -18,11 +15,9 @@ import styles from "./Ideas.module.css";
 
 const Ideas = () => {
   const [idea, setIdea] = useState([]);
-  const [isInEdition, setIsInEdition] = useState(false);
   const ideasCollectionRef = collection(db, "ideas");
 
   // WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
-
   const q = query(ideasCollectionRef, orderBy("date", "desc"));
 
   const getIdeasFromSnapshot = (querySnapshot) => {
@@ -70,34 +65,6 @@ const Ideas = () => {
     }
   };
 
-  // USUWANIE POMYSŁU
-
-  const handleDelete = (id) => {
-    const docRef = doc(db, "ideas", id);
-    deleteDoc(docRef);
-  };
-
-  // EDYCJA POMYSŁU
-
-  const handleEdit = (id) => {
-    setIsInEdition(true);
-  };
-  const handleCancel = (id) => {
-    setIsInEdition(false);
-  };
-  const handleUpdate = async (e, id) => {
-    e.preventDefault();
-    setIsInEdition(false);
-    const docRef = doc(db, "ideas", id);
-
-    try {
-      await updateDoc(docRef, getNewIdea(e));
-      toast.success("Changes saved");
-    } catch {
-      toast.error("Something went wrong");
-    }
-  };
-
   return (
     <div className={styles.ideas}>
       <Toaster />
@@ -119,7 +86,7 @@ const Ideas = () => {
           Points section.
         </p>
         <p>On behalf of plants, animals and the whole earth - THANK YOU!</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.submit}>
           <textarea
             name="idea"
             id="idea"
@@ -134,27 +101,15 @@ const Ideas = () => {
               return (
                 <IdeaCard
                   key={idea.id}
-                  isEdited={isInEdition}
                   id={idea.id}
                   user={idea.user}
                   date={date}
                   idea={idea.idea}
-                  handleDelete={() => {
-                    handleDelete(idea.id);
-                  }}
-                  handleEdit={() => {
-                    handleEdit(idea.id);
-                  }}
-                  handleCancel={() => {
-                    handleCancel(idea.id);
-                  }}
-                  handleCheck={(e) => handleUpdate(e, idea.id)}
                 />
               );
             })
           : null}
       </main>
-
       <Footer />
     </div>
   );

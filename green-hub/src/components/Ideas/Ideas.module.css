@@ -31,7 +31,7 @@
     height: 7rem;
 }
 
-.ideas textarea {
+.ideas form.submit textarea {
     border: none;
     width: 30rem;
     height: 7rem;
@@ -48,7 +48,7 @@
     flex-direction: column;
 }
 
-.ideas form button {
+.ideas form.submit button {
     align-self:flex-end;
     width: 7rem;
     margin: 1rem 0 4rem 0;
@@ -60,7 +60,7 @@
     color: white;
 }
 
-.ideas form button:hover {
+.ideas form.submit button :hover {
     cursor: pointer;
     background-color: hsla(0, 0%, 85%, 0.5);
     color:#8EA38A;
