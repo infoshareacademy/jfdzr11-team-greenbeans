@@ -6,11 +6,15 @@
 	align-items: center;
 }
 
-.form {
+.auth_form {
 	display: flex;
 	flex-direction: column;
 }
 
-label {
+.auth_form label {
 	padding-top: 10px;
+}
+
+.auth_form button {
+	margin-top: 16px;
 }

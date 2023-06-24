@@ -6,7 +6,7 @@ import {
 	Ideas,
 	Home,
 } from "./components";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -14,7 +14,9 @@ function App() {
 		<>
 			<Toaster />
 
-			<h1>Welcome to GreenHub</h1>
+			<Link to="/">
+				<h1>Welcome to GreenHub</h1>
+			</Link>
 			<Routes>
 				<Route
 					path="/"
