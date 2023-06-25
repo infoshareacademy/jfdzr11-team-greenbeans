@@ -6,6 +6,10 @@
 	align-items: center;
 }
 
+.auth_container p {
+	margin: 8px 0 0 0;
+}
+
 .auth_form {
 	display: flex;
 	flex-direction: column;
