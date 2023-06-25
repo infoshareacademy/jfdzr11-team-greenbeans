@@ -32,8 +32,22 @@ const Register = () => {
 		<div className={styles.auth_container}>
 			<form
 				onSubmit={handleSubmit}
-				className={styles.form}
+				className={styles.auth_form}
 			>
+				<label htmlFor="firstName">Name</label>
+				<input
+					type="text"
+					name="firstName"
+					id="firstName"
+					required
+				/>
+				<label htmlFor="lastName">Last Name</label>
+				<input
+					type="text"
+					name="lastName"
+					id="lastName"
+					required
+				/>
 				<label htmlFor="email">E-mail</label>
 				<input
 					type="email"
