@@ -7,8 +7,17 @@ import Login from "./Authentication/Login";
 import Register from "./Authentication/Register";
 import Layout from "./Layout/Layout";
 import Home from "./Home/Home";
+import ForgotPassword from "./Authentication/ForgotPassword";
 
-
-
-
-export { Ideas, Navbar, Footer, Articles, GetPoints, Login, Register, Layout, Home}
+export {
+	Ideas,
+	Navbar,
+	Footer,
+	Articles,
+	GetPoints,
+	Login,
+	Register,
+	Layout,
+	Home,
+	ForgotPassword,
+};

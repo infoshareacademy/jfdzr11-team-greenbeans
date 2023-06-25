@@ -43,6 +43,10 @@ const Login = () => {
 						/>
 						<button type="submit">Login</button>
 						<p>
+							Forgot password?
+							<Link to="/forgotpassword">Reset</Link>
+						</p>
+						<p>
 							You do not have an account yet?
 							<Link to="/register">Register now!</Link>
 						</p>

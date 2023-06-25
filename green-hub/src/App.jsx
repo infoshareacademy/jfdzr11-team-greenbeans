@@ -5,6 +5,7 @@ import {
 	GetPoints,
 	Ideas,
 	Home,
+	ForgotPassword,
 } from "./components";
 import { Routes, Route, Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -31,6 +32,10 @@ function App() {
 				<Route
 					path="/register"
 					element={<Register />}
+				></Route>
+				<Route
+					path="/forgotpassword"
+					element={<ForgotPassword />}
 				></Route>
 				<Route
 					path="/getpoints"

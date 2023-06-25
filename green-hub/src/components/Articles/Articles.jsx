@@ -5,20 +5,17 @@ import heart from '../../../assets/images/page-articles/heart.png'
 // import pinkHeart from '../../../assets/images/page-articles/pinkheart.png'
 
 const Articles = () => {
-  const [articleData, setArticleData] = useState(null);
+	const [articleData, setArticleData] = useState(null);
 
-  useEffect(() => {
+	useEffect(() => {
+		setArticleData(jsonData);
+	}, []);
 
-       setArticleData(jsonData);
+	return (
+		<div className={styles.container}>
+			<h1 className={styles.title}>articles</h1>
 
-    },[]);
-
-    return (
-      <div className={styles.container}>
-
-        <h1 className={styles.title}>articles</h1>
-
-        <p className={styles.subtitle}>be aware and get some points</p>
+			<p className={styles.subtitle}>be aware and get some points</p>
 
         {articleData && articleData.map((article)=> (
           <div className={styles.articleContainer} key={article.id}>
@@ -40,4 +37,4 @@ const Articles = () => {
         );
         }
 
-export default Articles
+export default Articles;
