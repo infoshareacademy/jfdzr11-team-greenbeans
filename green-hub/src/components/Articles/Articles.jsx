@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Articles.module.css'
 import jsonData from '../../components/Articles/data.json'
-import Header from '../../components/Header/Header'
-
+import heart from '../../../assets/images/page-articles/heart.png'
+// import pinkHeart from '../../../assets/images/page-articles/pinkheart.png'
 
 const Articles = () => {
   const [articleData, setArticleData] = useState(null);
@@ -25,14 +25,14 @@ const Articles = () => {
             <h1 className={styles.articleHeader}>{article.header}</h1>
             <p className={styles.articleAuthor}>{article.author}</p>
             <p className={styles.articleText}>{article.text}</p>
-            <img className={styles.heart}/>
+        
             <button className={styles.articleButton}>Learn more</button>
-            
-            <img className={styles.articleImage} src={article.image} alt="obrazek"/>
+            <div className={styles.imageContainer}>
+                <img className={styles.heart} src={heart}/>
+            <img className={styles.articleImage} src={article.image} alt="obrazek"/></div>
             </div>
              
             
-        
        )
        )
        }

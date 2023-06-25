@@ -14,9 +14,7 @@ function App() {
 		<>
 			<Toaster />
 
-			<Link to="/">
-				<h1>Welcome to GreenHub</h1>
-			</Link>
+			
 			<Routes>
 				<Route
 					path="/"
