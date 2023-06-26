@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Articles.module.css";
 import jsonData from "../../components/Articles/data.json";
+import Navbar from "../Navbar/Navbar";
 
 const Articles = () => {
 	const [articleData, setArticleData] = useState(null);
@@ -10,7 +11,10 @@ const Articles = () => {
 	}, []);
 
 	return (
+		<>
+		<Navbar />
 		<div className={styles.container}>
+			
 			<h1 className={styles.title}>articles</h1>
 
 			<p className={styles.subtitle}>be aware and get some points</p>
@@ -35,6 +39,7 @@ const Articles = () => {
 					</div>
 				))}
 		</div>
+		</>
 	);
 };
 
