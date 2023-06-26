@@ -4,15 +4,19 @@ import { useState } from "react";
 import { db } from "../../config/firebase";
 import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { toast } from "react-hot-toast";
+import useAuth from "../../context/AuthContext";
 
-const IdeaCard = ({ id, user, idea, date }) => {
+const IdeaCard = ({ id, user, idea, date, auth }) => {
+  const [edit, setEdit] = useState(false)
   const [isInEdition, setIsInEdition] = useState(false);
+  const { currentUser } = useAuth();
+
+  const editBtn = () => {setEdit(true)}
 
   const textArea = useRef(null);
   useEffect(() => {
     if (textArea.current) {
       textArea.current.style.height = textArea.current.scrollHeight + "px";
-      console.log(textArea.current);
     }
   }, [textArea.current]);
 
@@ -24,15 +28,17 @@ const IdeaCard = ({ id, user, idea, date }) => {
 
   // EDYCJA POMYSŁU
 
-  const handleEdit = (id) => {
+  const handleEdit = () => {
     setIsInEdition(true);
   };
-  const handleCancel = (id) => {
+  const handleCancel = () => {
     setIsInEdition(false);
+    setEdit(false)
   };
   const handleUpdate = async (e, id) => {
     e.preventDefault();
     setIsInEdition(false);
+    setEdit(false)
     console.log(e.target.ideaToEdit.value);
     const docRef = doc(db, "ideas", id);
 
@@ -54,8 +60,16 @@ const IdeaCard = ({ id, user, idea, date }) => {
         <>
           <p>{idea}</p>
           <div className={styles.btn}>
+            {currentUser.uid === auth ? 
+            !edit && 
+            (<button onClick={editBtn}>edit</button>)
+            : null}
+            {edit && 
+            (<>
             <button onClick={handleEdit}>EDIT</button>
             <button onClick={() => {handleDelete(id);}}>DELETE</button>
+            <button onClick={handleCancel}>CANCEL</button>
+            </>)}
           </div>
         </>
       )}
