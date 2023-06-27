@@ -1,27 +1,25 @@
-import { useState } from "react";
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import data from "./NavbarData.json"
+import NavbarLink from "../NavbarLink/NavbarLink";
 
 const Navbar = () => {
 
-	const {path, setPath} = useState()
-
-	const pathname = window.location.pathname
-	console.log(pathname)
-
-	// const 
-
 	return (
 		<div className={styles.navbar}>
-			<ul>
-				<Link to="/">GH</Link>
-				<Link to="/articles"><img src="../../../assets/images/page-main/copywriting.png"/></Link>
-				<Link to="/getpoints"><img src="../../../assets/images/page-main/heart.png"/></Link>
-				<Link to="/newideas"><img src="../../../assets/images/page-main/idea.png"/></Link>
-				<Link to="/prizes"><img src="../../../assets/images/page-main/trophy.png"/></Link>
-			</ul>
+			<nav>
+			<NavLink to="/">GH</NavLink>
+				{data.map((link, index) => {
+					return (
+						<NavbarLink 
+					key={index}
+					path={link.path}
+					icon={link.icon}/>
+					)
+				})}
+			</nav>
 			<div>
-				<p>Your points: 750</p>
+				<p>Your points: 600</p>
 			</div>
 		</div>
 	);
