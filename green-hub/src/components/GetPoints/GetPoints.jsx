@@ -6,6 +6,7 @@ const GetPoints = () => {
   return (
     <div className={styles.getpoints}>
         <Navbar/>
+        Getpoints
     </div>
   )
 }

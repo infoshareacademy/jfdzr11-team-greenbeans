@@ -7,6 +7,10 @@ import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 
 const IdeaCard = ({ id, user, idea, date, auth }) => {
+
+  // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
+  // stan isInEdition - określa komponent aktualnie jest wyświetlany czy podlega edycji
+  
   const [edit, setEdit] = useState(false)
   const [isInEdition, setIsInEdition] = useState(false);
   const { currentUser } = useAuth();
@@ -67,7 +71,7 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
             {edit && 
             (<>
             <button onClick={handleEdit}>EDIT</button>
-            <button onClick={() => {handleDelete(id);}}>DELETE</button>
+            <button onClick={() => {handleDelete(id)}}>DELETE</button>
             <button onClick={handleCancel}>CANCEL</button>
             </>)}
           </div>
