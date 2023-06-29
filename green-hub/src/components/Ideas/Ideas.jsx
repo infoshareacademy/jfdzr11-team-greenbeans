@@ -4,6 +4,7 @@ import { db } from "../../config/firebase.js";
 import {
   Timestamp,
   addDoc,
+  getDocs,
   collection,
   orderBy,
   onSnapshot,
@@ -12,10 +13,34 @@ import {
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./Ideas.module.css";
+import useAuth from "../../context/AuthContext";
 
 const Ideas = () => {
   const [idea, setIdea] = useState([]);
+  const [user, setUser] = useState('')
   const ideasCollectionRef = collection(db, "ideas");
+  const usersCollectionRef = collection(db, "users")
+  const { currentUser } = useAuth();
+
+  // POBIERANIE USERÓW
+  const getUser = async () => {
+    try {
+      const data = await getDocs(usersCollectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data()
+      }))
+      const user = filteredData.filter(user => user.email === currentUser.email)
+      const userName = `${user[0].name} ${user[0].lastName}`
+      console.log(userName)
+      setUser(userName);
+    } catch {
+      console.log("no user here");
+    }
+  }
+  
+  useEffect(() => {
+    getUser();
+  }, [])
 
   // WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
   const q = query(ideasCollectionRef, orderBy("date", "desc"));
@@ -36,11 +61,13 @@ const Ideas = () => {
   // funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
   const getNewIdea = (e) => {
     const newIdea = {
-      user: "Suzana",
+      user: user,
       idea: e.target.idea.value,
       date: Timestamp.fromDate(new Date()),
+      auth: currentUser.uid
     };
     e.target.reset();
+    console.log(currentUser.email)
     return newIdea;
   };
 
@@ -85,8 +112,21 @@ const Ideas = () => {
           planet in this way, we will consider adding this activity in the
           Points section.
         </p>
+        <div>
+        <div className={styles.imagesPack}>
+          <img src="../../../assets/images/page-ideas/tree-12.png" alt="" />
+          <img src="../../../assets/images/page-ideas/tree-11.png" alt="" />
+          <img src="../../../assets/images/page-ideas/bush.png" alt="" />
+        </div>
         <p>On behalf of plants, animals and the whole earth - THANK YOU!</p>
-        <form onSubmit={handleSubmit} className={styles.submit}>
+        <div className={styles.imagesPack}>
+          <img src="../../../assets/images/page-ideas/rabbit.png" alt="" />
+          <img src="../../../assets/images/page-ideas/fox.png" alt="" />
+          <img src="../../../assets/images/page-ideas/dolphin.png" alt="" />
+        </div>
+        </div>
+        <img src="../../../assets/images/page-ideas/save.png" />
+        {currentUser ? <form onSubmit={handleSubmit} className={styles.submit}>
           <textarea
             name="idea"
             id="idea"
@@ -94,7 +134,7 @@ const Ideas = () => {
             placeholder="type your idea here!.."
           ></textarea>
           <button>SUBMIT</button>
-        </form>
+        </form> : null} 
         {idea
           ? idea.map((idea) => {
               const date = idea?.date?.toDate().toDateString();
@@ -105,6 +145,7 @@ const Ideas = () => {
                   user={idea.user}
                   date={date}
                   idea={idea.idea}
+                  auth={idea.auth}
                 />
               );
             })

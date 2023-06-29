@@ -8,6 +8,7 @@ import Register from "./Authentication/Register";
 import Layout from "./Layout/Layout";
 import Home from "./Home/Home";
 import ForgotPassword from "./Authentication/ForgotPassword";
+import Prizes from "./Prizes/Prizes";
 
 export {
 	Ideas,
@@ -20,4 +21,5 @@ export {
 	Layout,
 	Home,
 	ForgotPassword,
+	Prizes,
 };

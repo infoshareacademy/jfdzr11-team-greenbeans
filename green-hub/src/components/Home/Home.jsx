@@ -10,9 +10,33 @@ import bad from '../../../assets/images/backgrounds/help.png'
 import semi from '../../../assets/images/backgrounds/better2.png'
 import good from '../../../assets/images/backgrounds/thebest.png'
 
+import { getDocs, collection } from "@firebase/firestore";
+import { db } from "../../config/firebase";
+import { useState, useEffect } from "react";
 
 const Home = () => {
 	const { logout, currentUser } = useAuth();
+	const [user, setUser] = useState('')
+	const usersCollectionRef = collection(db, "users")
+
+	const getUser = async () => {
+		try {
+		  const data = await getDocs(usersCollectionRef);
+		  const filteredData = data.docs.map((doc) => ({
+			...doc.data()
+		  }))
+		  const user = filteredData.filter(user => user.email === currentUser.email)
+		  const userName = `${user[0].name}`
+		  console.log(filteredData)
+		  setUser(userName);
+		} catch {
+		  console.log("no user here");
+		}
+	  }
+	  
+	  useEffect(() => {
+		getUser();
+	  }, [])
 
 	const handleLogout = async () => {
 		try {
@@ -35,6 +59,9 @@ const Home = () => {
 
 	return (
 		<div className={styles.home_container} style={{backgroundImage: `url(${getBackgroundImage()})`}}>
+			<Link to="/">
+				<h1>Welcome to GreenHub</h1>
+			</Link>
 			<div className={styles.login_holder}>
 				{!currentUser ? (
 					<>
@@ -63,8 +90,11 @@ const Home = () => {
 				)}
 			</div>
 			<div className={styles.text_holder}>
-				<h1>Hello friend!</h1>
-				<h2>It's nice to meet You!</h2>
+				{!currentUser ? (
+					<><h1>Hello friend!</h1>
+					<h2>It's nice to meet You!</h2></>
+				) : (<><h1>Hello {`${user}`}!</h1>
+				<h2>It's a pleasure to see U again!</h2></>)}
 				<p> Let's help our planet!</p>
 			</div>
 			<div className={styles.button_holder}>

@@ -11,14 +11,20 @@
 
 .ideas h1 {
     text-align: center;
-    font-size: 3.5rem;
+    text-shadow: 10px 10px 10px #8EA389;
+    letter-spacing: 2rem;
+    font-size: 4rem;
     letter-spacing: 50%;
+    margin: 4rem 0 2.5rem 0;
 }
 
 .ideas main p {
     padding: 1rem;
-    max-width: 40rem;
-    font-size: 1rem;
+    max-width: 43rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
 }
 
 .ideas h1 + p {
@@ -60,8 +66,30 @@
     color: white;
 }
 
-.ideas form.submit button :hover {
+.ideas form.submit button:hover {
     cursor: pointer;
     background-color: hsla(0, 0%, 85%, 0.5);
     color:#8EA38A;
+}
+
+.ideas div + img {
+    width: 8rem;
+    margin-bottom: 8rem;
+}
+
+.imagesPack {
+    display: flex;
+    align-items: center;
+}
+
+.imagesPack img {
+    width: 2rem;
+}
+
+.ideas main .imagesPack + p {
+    font-size: 1.4rem;
+}
+
+.ideas p + div {
+    display: flex;
 }
