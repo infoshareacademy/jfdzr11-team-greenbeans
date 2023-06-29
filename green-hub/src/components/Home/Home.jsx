@@ -20,8 +20,8 @@ const Home = () => {
 		  const userName = `${user[0].name}`
 		  console.log(filteredData)
 		  setUser(userName);
-		} catch (error) {
-		  console.log(error);
+		} catch {
+		  console.log("no user here");
 		}
 	  }
 	  

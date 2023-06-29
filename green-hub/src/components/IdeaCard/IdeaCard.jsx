@@ -64,7 +64,7 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
         <>
           <p>{idea}</p>
           <div className={styles.btn}>
-            {currentUser.uid === auth ? 
+            {currentUser?.uid === auth ? 
             !edit && 
             (<button onClick={editBtn}>edit</button>)
             : null}

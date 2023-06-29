@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import styles from './Prizes.module.css'
@@ -6,6 +6,8 @@ import PrizesBox from '../PrizesBox/PrizesBox'
 import data from './PrizesData.json'
 
 const Prizes = () => {
+
+  const [visible, setVisible] = useState(false)
 
   return (
     <div className={styles.prizes}>
@@ -21,10 +23,16 @@ const Prizes = () => {
                 logo={prize.logo}
                 prize={prize.prize}
                 points={prize.points}
-                value={prize.value}/>
+                value={prize.value}
+                getPrize={() => {setVisible(true)}}/>
               )
             })}
           </div>
+          {visible === true ? <section className={styles.info}>
+          <button onClick={() => {setVisible(false)}}>✖</button>
+            <p>Here will be Your Prize</p>
+            </section> : null}
+          
         </main>
         <Footer />
     </div>

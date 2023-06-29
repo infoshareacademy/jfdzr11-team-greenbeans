@@ -33,8 +33,8 @@ const Ideas = () => {
       const userName = `${user[0].name} ${user[0].lastName}`
       console.log(userName)
       setUser(userName);
-    } catch (error) {
-      console.error(error);
+    } catch {
+      console.log("no user here");
     }
   }
   
