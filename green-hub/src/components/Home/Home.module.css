@@ -19,93 +19,92 @@
 }
 
 .home_container {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-     
-        height: 100vh;
-        max-width: 100vw;
-       
-      
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+  max-width: 100vw;
 }
 a {
   text-decoration: none;
 }
-.btns  {
-
+.btns {
   width: 249px;
-    height: 123px;
-    background: #C7D6E1;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 15px;
-      font-family: 'Josefin Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 35px;
-        line-height: 35px;
-       text-decoration: none;
-        text-align: center;
-        text-transform: lowercase;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 10px;
+  height: 123px;
+  background: #c7d6e1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 35px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: lowercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
         border: none;
-        
 }
 h1 {
-  font-family: 'Josefin Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 50px;
-    line-height: 50px;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 50px;
 }
 .icon {
-  
-    width: 100px;
-    height: 100px;
-    opacity: 0.25;
+  width: 100px;
+  height: 100px;
+  opacity: 0.25;
 }
 .loginbtn {
-    position: absolute;
-  
-    left: 18px;
-    top: -4px;
-    
-    width: 140px;
-      height: 140px;
-      border: none;
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      font-family: 'Josefin Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 22px;
-        
-        text-align: center;
-        text-transform: uppercase;
-      background-color: transparent;
-        color: #000000;
+  position: absolute;
+
+  left: 18px;
+  top: -4px;
+
+  width: 140px;
+  height: 140px;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #000000;
 }
 .registerbtn {
   position: absolute;
-    left: 110px;
-    top: 110px;
-    
-    width: 100px;
-    height: 100px;
-    border: none;
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    font-family: 'Josefin Sans';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      text-align: center;
-      text-transform: uppercase;
-      color: #000000;
-      
+  left: 110px;
+  top: 110px;
+
+  width: 100px;
+  height: 100px;
+  border: none;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.points_container {
+  float: right;
+  padding-right: 10px;
 }
