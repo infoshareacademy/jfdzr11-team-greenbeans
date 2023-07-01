@@ -30,7 +30,8 @@ const Articles = () => {
             <button className={styles.articleButton}>Learn more</button>
             <div className={styles.imageContainer}>
                 <img className={styles.heart} src={heart}/>
-            <img className={styles.articleImage} src={article.image} alt="obrazek"/></div>
+            <img className={styles.articleImage} src={article.image} alt="obrazek"/>
+            </div>
             </div>
              
             
