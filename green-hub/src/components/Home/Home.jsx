@@ -107,7 +107,7 @@ const Home = () => {
         )}
         <p> Let's help our planet!</p>
       </div>
-      {/* <UseUserPoints /> */}
+      <UseUserPoints />
       <div className={styles.button_holder}>
         <Link to="/articles">
           <button className={styles.btns}>
