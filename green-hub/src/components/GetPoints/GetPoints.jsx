@@ -20,6 +20,7 @@ const GetPoints = () => {
           title={points.title}
           description={points.descritpion}
           scaler={points.scaler}
+          scale={points.scale}
           isButton={points.isButton}/>
           )
         })}

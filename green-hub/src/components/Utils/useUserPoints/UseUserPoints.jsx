@@ -18,6 +18,6 @@ export const UseUserPoints = () => {
     }
   }, [currentUser]);
 
-  console.log(points);
+  // console.log(points);
   return { userPoints: points };
 };

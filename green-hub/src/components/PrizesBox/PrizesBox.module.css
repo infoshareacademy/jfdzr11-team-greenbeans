@@ -124,7 +124,7 @@ img.lock {
     transform: scale(1.05);
 }
 
-.info img {
+.info img.background {
     width: 9rem;
     height: 9rem;
     opacity: 0.25;
@@ -136,5 +136,24 @@ img.lock {
 
 .info div {
     display: flex;
+    /* height: 5.5rem; */
     margin-top: 3rem;
+}
+
+.info p.code {
+    font-weight: 600;
+    margin: 0.5rem 0 0 0;
+}
+
+.info div.activated {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0;
+    height: 5.5rem;
+}
+
+.info div.activated img {
+    width: 22rem;
+    z-index: 2;
 }

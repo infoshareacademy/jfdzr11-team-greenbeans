@@ -4,17 +4,35 @@ import useAuth from "../../context/AuthContext";
 import { v4 as uuidv4 } from "uuid";
 import Modal from "react-modal";
 import { useState } from "react";
+import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
+import { doc, updateDoc } from "@firebase/firestore";
+import { db } from "../../config/firebase";
 
 const PrizesBox = ({ logo, prize, points, shop}) => {
 
   const [visible, setVisible] = useState(false);
+  const [isActivated, setIsActivated] = useState(false)
 
-  function closeBox() {
+  const { userPoints } = UseUserPoints();
+  const {currentUser} = useAuth()
+
+  const closeBox = () => {
     setVisible(false);
+    setIsActivated(false)
   }
 
-  const userPoints = 600;
-  const {currentUser} = useAuth()
+  const updateUserPoints = async (id, prizePoints) => {
+    setIsActivated(true);
+    const updatedPoints = userPoints - prizePoints
+    const docRef = doc(db, "users", id)
+    
+    try {
+      await updateDoc(docRef, {points: updatedPoints})
+    }
+    catch {
+      console.log("nie udało się")
+    }
+  }
 
   return (
     <>
@@ -31,17 +49,18 @@ const PrizesBox = ({ logo, prize, points, shop}) => {
         className={styles.info}
       >
         <button className={styles.cancel} onClick={closeBox}>✖</button>
-        <img src="../../../assets/images/page-main/trophy.png" />
+        <img src="../../../assets/images/page-main/trophy.png" className={styles.background}/>
         
         <h3>{prize} {shop}</h3>
         <p>points: {points}</p>
-        <div>
+        {!isActivated && <div>
         <p>activate your prize here: </p>
-        <button>ACTIVATE</button>
-        </div>
-        
-        {/* <p>{uuidv4()}</p> */}
-        
+        <button onClick={() => {updateUserPoints(currentUser.uid, points)}}>ACTIVATE</button>
+        </div>}
+        {isActivated && <div className={styles.activated}>
+        <img src="../../../assets/images/page-prize/code.png" />
+        <p className={styles.code}>{uuidv4()}</p>
+        </div>}       
       </Modal>
       </>
       ) : (
