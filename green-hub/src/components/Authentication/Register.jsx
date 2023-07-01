@@ -4,12 +4,10 @@ import useAuth from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "@firebase/firestore";
 import { db } from "../../config/firebase";
-import { v4 as uuidv4 } from "uuid";
 
 const Register = () => {
 	const navigate = useNavigate();
-	const { register, currentUser } = useAuth();
-	const userId = uuidv4();
+	const { register } = useAuth();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -22,18 +20,18 @@ const Register = () => {
 			toast.error("Passwords must match");
 		} else {
 			try {
-				await register(email, password);
+				//zmienna do przechwycenia id użytkownika z autentykacji
+				const registeredUser = await register(email, password);
 				//Dodanie danych do kolekcji users z własnym id
-				await setDoc(doc(db, "users", userId), {
+				await setDoc(doc(db, "users", registeredUser.user.uid), {
 					name: event.target?.firstName.value,
 					lastName: event.target?.lastName.value,
 					email: event.target?.email.value,
 					points: 0,
-					pointsTotal: 0
+					pointsTotal: 0,
 				});
 				navigate("/");
 				toast.success("Sucessfully registered");
-				console.log(userId);
 			} catch (error) {
 				toast.error(error.code);
 			}
