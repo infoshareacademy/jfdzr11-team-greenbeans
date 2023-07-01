@@ -13,7 +13,7 @@ import good from "../../../assets/images/backgrounds/thebest.png";
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
-import UseUserPoints from "../Utils/UseUserPoints/UseUserPoints";
+import { useTotalPoints } from "../Utils/useTotalPoints/useTotalPoints";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
@@ -30,7 +30,6 @@ const Home = () => {
         (user) => user.email === currentUser.email
       );
       const userName = `${user[0].name}`;
-      console.log(filteredData);
       setUser(userName);
     } catch {
       console.log("no user here");
@@ -48,7 +47,7 @@ const Home = () => {
       console.error(error);
     }
   };
-  const pointsTotal = 1500; //tu wstawić odpowiednią funkcję do pointsTotal//
+  const { pointsTotal } = useTotalPoints(); //tu wstawić odpowiednią funkcję do pointsTotal//
 
   const getBackgroundImage = () => {
     if (pointsTotal >= 1500) {
@@ -107,7 +106,6 @@ const Home = () => {
         )}
         <p> Let's help our planet!</p>
       </div>
-      <UseUserPoints />
       <div className={styles.button_holder}>
         <Link to="/articles">
           <button className={styles.btns}>

@@ -1,32 +1,34 @@
 import { useState, useEffect } from "react";
 import { db } from "../../../config/firebase";
 import useAuth from "../../../context/AuthContext";
-import { collection, doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
-const UseUserPoints = () => {
+export const UseUserPoints = () => {
   const { currentUser } = useAuth();
-  const [points, setPoints] = useState("");
-  const usersCollectionRef = collection(db, "users");
-  // v1
+  const [points, setPoints] = useState(null);
+  // const [loggedinmsg, setLoggedinmsg] = useState("");
+
+  // pobieranie i wyświetlanie punktów uzytkownika
 
   useEffect(() => {
     if (currentUser?.uid) {
       onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
         setPoints(doc.data().points);
-        console.log(doc.data());
+        // setLoggedinmsg("Your Points : ");
       });
-      console.log(currentUser);
-      console.log(usersCollectionRef);
-      console.log(points);
     } else {
-      setPoints(0);
+      setPoints(null);
+      // setLoggedinmsg("Log in to gather points!");
     }
   }, [currentUser]);
 
-  return (
-    <div>
-      <p> Points : {points} </p>
-    </div>
-  );
+  console.log(points);
+  return { userPoints: points };
+  // (
+  // <div>
+  //   <p>
+  //     {loggedinmsg} {points}
+  //   </p>
+  // </div>
+  // );
 };
-export default UseUserPoints;
