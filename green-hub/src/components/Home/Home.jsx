@@ -59,9 +59,7 @@ const Home = () => {
 
 	return (
 		<div className={styles.home_container} style={{backgroundImage: `url(${getBackgroundImage()})`}}>
-			<Link to="/">
-				<h1>Welcome to GreenHub</h1>
-			</Link>
+			
 			<div className={styles.login_holder}>
 				{!currentUser ? (
 					<>
