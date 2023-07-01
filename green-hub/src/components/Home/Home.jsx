@@ -14,6 +14,7 @@ import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
 import { useTotalPoints } from "../Utils/useTotalPoints/useTotalPoints";
+import DisplayPoints from "../DisplayPoints/DisplayPoints";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
@@ -65,7 +66,7 @@ const Home = () => {
       style={{ backgroundImage: `url(${getBackgroundImage()})` }}
     >
       <div className={styles.login_holder}>
-        {!currentUser ? (
+        {!currentUser?.uid ? (
           <>
             <Link to="/login">
               <button
@@ -91,9 +92,12 @@ const Home = () => {
             </button>
           </Link>
         )}
+        <div className={styles.points_container}>
+          <DisplayPoints />
+        </div>
       </div>
       <div className={styles.text_holder}>
-        {!currentUser ? (
+        {!currentUser?.uid ? (
           <>
             <h1>Hello friend!</h1>
             <h2>Its nice to meet You!</h2>

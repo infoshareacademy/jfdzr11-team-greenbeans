@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
         console.log(user);
       } else {
         setIsGuest(true);
+        setCurrentUser({});
       }
     });
 

@@ -3,11 +3,10 @@ import { db } from "../../../config/firebase";
 import useAuth from "../../../context/AuthContext";
 import { doc, onSnapshot } from "firebase/firestore";
 
+// pobieranie i wyświetlanie punktów uzytkownika do rendera warunkowego
 export const useTotalPoints = () => {
   const { currentUser } = useAuth();
   const [pointsTotal, setPointsTotal] = useState(null);
-
-  // pobieranie i wyświetlanie punktów uzytkownika
 
   useEffect(() => {
     if (currentUser?.uid) {
