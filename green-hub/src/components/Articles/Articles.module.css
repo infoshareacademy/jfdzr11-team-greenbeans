@@ -76,6 +76,12 @@
   width: 43rem;
   height: 14.3rem;
 }
+.articleLink {
+          flex-direction: row; 
+        grid-column: 1 / 2;
+        grid-row: 4 / 4;
+}
+
 
 .articleButton {
   flex-direction: row;
@@ -169,13 +175,15 @@
   grid-area: author;
   margin: 0;
 }
-/* .pinkHeart {
+.pinkHeart {
         grid-column: 4/5;
+        position: absolute;
+        
         grid-row: 1/2;
         width: 50px;
         height: 50px;
-        background: url('/green-hub/assets/images/page-articles/pinkheart.png');
-} */
+        z-index: 2;
+}
 .heart {
   position: absolute;
   grid-column: 4/5;
@@ -183,4 +191,8 @@
   width: 50px;
   height: 50px;
   z-index: 2;
+}
+
+.heart:hover{
+        cursor: pointer;
 }
