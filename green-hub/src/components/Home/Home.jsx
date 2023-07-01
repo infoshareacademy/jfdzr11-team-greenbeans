@@ -37,8 +37,11 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		getUser();
-	}, []);
+		if (currentUser?.email) {
+			getUser();
+		}
+		console.log(currentUser);
+	}, [currentUser]);
 
 	const handleLogout = async () => {
 		try {
@@ -96,7 +99,7 @@ const Home = () => {
 				)}
 			</div>
 			<div className={styles.text_holder}>
-				{!currentUser ? (
+				{!currentUser?.email ? (
 					<>
 						<h1>Hello friend!</h1>
 						<h2>It's nice to meet You!</h2>
