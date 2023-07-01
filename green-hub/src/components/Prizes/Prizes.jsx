@@ -8,6 +8,11 @@ import data from './PrizesData.json'
 const Prizes = () => {
 
   const [visible, setVisible] = useState(false)
+  // const [disabled, setDisabled] = useState(false)
+
+  // const visible = () => {
+
+  // }
 
   return (
     <div className={styles.prizes}>
@@ -24,7 +29,7 @@ const Prizes = () => {
                 prize={prize.prize}
                 points={prize.points}
                 value={prize.value}
-                getPrize={() => {setVisible(true)}}/>
+                getPrize={() => {setVisible(true); console.log("działa")}}/>
               )
             })}
           </div>
