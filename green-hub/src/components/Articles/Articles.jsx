@@ -47,6 +47,7 @@ const Articles = () => {
             
             
             <div className={styles.imageContainer}>
+<<<<<<< HEAD
                 <img 
                 className={`${styles.heart} ${clickedHearts.includes(article.id) ? styles.pinkHeart : ''}`}
                 src={clickedHearts.includes(article.id) ? pinkHeart : heart}
@@ -54,6 +55,11 @@ const Articles = () => {
                 onClick={() => handleHeartClick(article.id)}
                 />
             <img className={styles.articleImage} src={article.image} alt="obrazek"/></div>
+=======
+                <img className={styles.heart} src={heart}/>
+            <img className={styles.articleImage} src={article.image} alt="obrazek"/>
+            </div>
+>>>>>>> 14573ee4499b86138c813fff0a848d312f23521a
             </div>
              
             
