@@ -3,6 +3,7 @@ import styles from './Articles.module.css'
 import jsonData from '../../components/Articles/data.json'
 import heart from '../../../assets/images/page-articles/heart.png'
 // import pinkHeart from '../../../assets/images/page-articles/pinkheart.png'
+import Navbar from "../Navbar/Navbar";
 
 const Articles = () => {
 	const [articleData, setArticleData] = useState(null);
@@ -12,7 +13,10 @@ const Articles = () => {
 	}, []);
 
 	return (
+		<>
+		<Navbar />
 		<div className={styles.container}>
+			
 			<h1 className={styles.title}>articles</h1>
 
 			<p className={styles.subtitle}>be aware and get some points</p>
@@ -34,6 +38,7 @@ const Articles = () => {
        )
        }
         </div>
+		</>
         );
         }
 

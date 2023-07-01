@@ -1,16 +1,25 @@
 import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
+import data from "./NavbarData.json"
+import NavbarLink from "../NavbarLink/NavbarLink";
 
 const Navbar = () => {
+
 	return (
 		<div className={styles.navbar}>
-			<ul>
-				<li>articles</li>
-				<li>points</li>
-				<li>new ideas</li>
-				<li>prize</li>
-			</ul>
+			<nav>
+			<NavLink to="/">GH</NavLink>
+				{data.map((link, index) => {
+					return (
+						<NavbarLink 
+					key={index}
+					path={link.path}
+					icon={link.icon}/>
+					)
+				})}
+			</nav>
 			<div>
-				<p>Your points: 750</p>
+				<p>Your points: 600</p>
 			</div>
 		</div>
 	);

@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const Register = () => {
 	const navigate = useNavigate();
-	const { register } = useAuth();
+	const { register, currentUser } = useAuth();
 	const userId = uuidv4();
 
 	const handleSubmit = async (event) => {
@@ -27,8 +27,9 @@ const Register = () => {
 				await setDoc(doc(db, "users", userId), {
 					name: event.target?.firstName.value,
 					lastName: event.target?.lastName.value,
+					email: event.target?.email.value,
 					points: 0,
-					pointsTotal: 0,
+					pointsTotal: 0
 				});
 				navigate("/");
 				toast.success("Sucessfully registered");

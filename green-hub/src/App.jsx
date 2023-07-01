@@ -7,8 +7,9 @@ import {
 	Home,
 	ForgotPassword,
 } from "./components";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import Prizes from "./components/Prizes/Prizes";
 
 function App() {
 	return (
@@ -45,6 +46,10 @@ function App() {
 				<Route
 					path="/articles"
 					element={<Articles />}
+				></Route>
+				<Route
+					path="/prizes"
+					element={<Prizes />}
 				></Route>
 			</Routes>
 		</>
