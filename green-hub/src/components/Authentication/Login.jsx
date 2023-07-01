@@ -22,22 +22,21 @@ const Login = () => {
   return (
     <>
       {!currentUser?.uid ? (
+        <div className={styles.layout}>
         <div className={styles.auth_container}>
+          <h1>Hello!</h1>
           <form onSubmit={handleSubmit} className={styles.auth_form}>
-            <label htmlFor="email">E-mail</label>
-            <input type="email" name="email" id="email" required />
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" required />
-            <button type="submit">Login</button>
-            <p>
-              Forgot password?
-              <Link to="/forgotpassword">Reset</Link>
-            </p>
-            <p>
-              You do not have an account yet?
-              <Link to="/register">Register now!</Link>
-            </p>
+            {/* <label htmlFor="email">E-mail</label> */}
+            <input type="email" name="email" id="email" placeholder="email"required />
+            {/* <label htmlFor="password">Password</label> */}
+            <input type="password" name="password" id="password" placeholder="password" required />
+            <button type="submit">LOGIN</button>
+            <p>Forgot password?</p>
+            <Link to="/forgotpassword">RESET</Link>
+            <p>You do not have an account yet?</p>
+            <Link to="/register">Register now!</Link>
           </form>
+        </div>
         </div>
       ) : (
         <Navigate to="/" />
