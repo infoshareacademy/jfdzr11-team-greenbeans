@@ -1,0 +1,49 @@
+[
+    {"icon": "../../../assets/images/page-points/bicycle.png",
+    "title": "transport by bike",
+    "descritpion": "just turn on the location in your phone, we will check your way and speed",
+    "scaler" : "1 km = 10 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/bus.png",
+    "title": "transport by bus",
+    "descritpion": "keep your tickets or query code in your app",
+    "scaler" : "1 ticket = 20 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/footprints.png",
+    "title": "transport on foot",
+    "descritpion": "just turn on the location in your phone, we will check your way and speed",
+    "scaler" : "1 km = 20 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/clothes-hanger.png",
+    "title": "recycle old clothes",
+    "descritpion": "bring your old clothes and leave in shops that cooperate with us",
+    "scaler" : "1 bag = 50 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/wine-bottles.png",
+    "title": "recycle glasses",
+    "descritpion": "return glasses in designated collection points",
+    "scaler" : "1 piece = 4 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/soft-drink.png",
+    "title": "recycle cans",
+    "descritpion": "return glasses in designated collection points",
+    "scaler" : "1 piece = 3 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/electrical-energy.png",
+    "title": "save energy",
+    "descritpion": "save energy at home - your total usage/ per month/ per person must be less than ...",
+    "scaler" : "1 bill = 50 points",
+    "isButton": true},
+
+    {"icon": "../../../assets/images/page-points/book.png",
+    "title": "be aware",
+    "descritpion": "after reading article on our website click 'like' and get new points! it doesn't require additional submit :)",
+    "scaler" : "1 article = 8 points",
+    "isButton": false}
+]
