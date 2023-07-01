@@ -96,15 +96,15 @@ const Home = () => {
         {!currentUser ? (
           <>
             <h1>Hello friend!</h1>
-            <h2>It's nice to meet You!</h2>
+            <h2>Its nice to meet You!</h2>
           </>
         ) : (
           <>
             <h1>Hello {`${user}`}!</h1>
-            <h2>It's a pleasure to see U again!</h2>
+            <h2>Its a pleasure to see U again!</h2>
           </>
         )}
-        <p> Let's help our planet!</p>
+        <p> Lets help our planet!</p>
       </div>
       <div className={styles.button_holder}>
         <Link to="/articles">
