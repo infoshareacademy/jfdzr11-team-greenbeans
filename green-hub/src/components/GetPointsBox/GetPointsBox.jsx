@@ -48,7 +48,7 @@ const GetPointsBox = ({icon, title, description, scaler, scale, isButton = true}
             <span>need more info? click here</span>
             <button><img src="../../../assets/images/page-points/about-us.png" /></button>
           </div>
-          {isButton && <button onClick={() => {setVisible(true)}}>SUBMIT POINTS</button>}
+          {isButton && <button disabled={!currentUser?.uid} onClick={() => {setVisible(true)}}>SUBMIT POINTS</button>}
           {!isButton && null}
           <Modal
         isOpen={visible}

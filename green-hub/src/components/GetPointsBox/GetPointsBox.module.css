@@ -87,6 +87,17 @@ div.img img {
     color:#8EA38A;
 }
 
+.getpointsBox button:disabled {
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+.getpointsBox button:disabled:hover {
+    cursor: auto;
+    background-color: #8EA38A;
+    color: white;
+}
+
 /* modal */
 
 .info {

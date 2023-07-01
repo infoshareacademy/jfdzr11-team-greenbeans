@@ -43,7 +43,16 @@ const PrizesBox = ({ logo, prize, points, shop}) => {
           <span>{prize}</span>
           <span className={styles.points}>{points} points</span>
         </button>
-        <Modal
+      </>
+      ) : (
+        <button className={`${styles.box} ${styles.disabled}`}>
+          <img src="../../../assets/images/page-prize/lock.png" className={styles.lock} />
+          <img src={logo} />
+          <span>{prize}</span>
+          <span className={styles.points}>{points} points</span>
+        </button>
+      )}
+       <Modal
         isOpen={visible}
         onRequestClose={closeBox}
         className={styles.info}
@@ -62,15 +71,6 @@ const PrizesBox = ({ logo, prize, points, shop}) => {
         <p className={styles.code}>{uuidv4()}</p>
         </div>}       
       </Modal>
-      </>
-      ) : (
-        <button className={`${styles.box} ${styles.disabled}`}>
-          <img src="../../../assets/images/page-prize/lock.png" className={styles.lock} />
-          <img src={logo} />
-          <span>{prize}</span>
-          <span className={styles.points}>{points} points</span>
-        </button>
-      )}
     </>
   );
 };
