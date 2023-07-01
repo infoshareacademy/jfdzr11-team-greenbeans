@@ -26,6 +26,7 @@ const Register = () => {
 				await setDoc(doc(db, "users", registeredUser.user.uid), {
 					name: event.target?.firstName.value,
 					lastName: event.target?.lastName.value,
+					isAdmin: false,
 					email: event.target?.email.value,
 					points: 0,
 					pointsTotal: 0,
