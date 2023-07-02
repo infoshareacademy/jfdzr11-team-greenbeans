@@ -4,7 +4,7 @@
     "author": "United Nations",
     "header": "What is climate change?",
     "text": "Many people think climate change mainly means warmer temperatures. But temperature rise is only the beginning of the story.",
-    "image": "/assets/images/page-articles/photo-1.jpeg",
+    "image": "../../../assets/images/page-articles/photo-1.jpeg",
     "link": "https://www.un.org/en/climatechange/what-is-climate-change"
 
 },
@@ -15,7 +15,7 @@
     "author": "Acciona Wind",
     "header": "Wind energy",
     "text": "Wind power is the most efficient technology to produce energy in a safe and environmentally sustainable manner:  it is zero emissions, local, inexhaustible, competitive and it creates wealth and jobs.",
-    "image":  "/assets/images/page-articles/photo-2.jpeg",
+    "image":  "../../../assets/images/page-articles/photo-2.jpeg",
     "link": "https://www.acciona.com/renewable-energy/wind-energy/?_adin=02021864894"
 },
 
@@ -25,7 +25,7 @@
     "author": "WWF",
     "header": "Most endangered animals",
     "text": "Currently, more than 41,000 species have been assessed to be under threat of extinction according to the IUCN.",
-    "image": "/assets/images/page-articles/photo-3.jpeg",
+    "image": "../../../assets/images/page-articles/photo-3.jpeg",
     "link": "https://www.wwf.org.uk/learn/wildlife/endangered-animals"
 }
 ]

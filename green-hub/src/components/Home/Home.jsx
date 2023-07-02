@@ -14,7 +14,8 @@ import background from "../../../assets/images/backgrounds/good.svg";
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
-import UseUserPoints from "../Utils/UseUserPoints/UseUserPoints";
+import { useTotalPoints } from "../Utils/useTotalPoints/useTotalPoints";
+import DisplayPoints from "../DisplayPoints/DisplayPoints";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
@@ -31,7 +32,6 @@ const Home = () => {
         (user) => user.email === currentUser.email
       );
       const userName = `${user[0].name}`;
-      console.log(filteredData);
       setUser(userName);
     } catch {
       console.log("no user here");
@@ -49,7 +49,7 @@ const Home = () => {
       console.error(error);
     }
   };
-  const pointsTotal = 1500; 
+  const { pointsTotal } = useTotalPoints(); //tu wstawić odpowiednią funkcję do pointsTotal//
 
   const getBackgroundImage = () => {
     if (pointsTotal >= 1500) {
@@ -67,7 +67,7 @@ const Home = () => {
         {/* <div className={styles.main_image} style={{ backgroundImage: `url(${getBackgroundImage()})`}}></div> */}
     
       <div className={styles.login_holder}>
-        {!currentUser ? (
+        {!currentUser?.uid ? (
           <>
             <Link to="/login">
               <button
@@ -95,9 +95,12 @@ const Home = () => {
             </button>
           </Link>
         )}
+        <div className={styles.points_container}>
+          <DisplayPoints />
+        </div>
       </div>
       <div className={styles.text_holder}>
-        {!currentUser ? (
+        {!currentUser?.uid ? (
           <>
             <h1>Hello friend!</h1>
             <h2>Its nice to meet You!</h2>
@@ -110,7 +113,6 @@ const Home = () => {
         )}
         <p> Lets help our planet!</p>
       </div>
-      <UseUserPoints />
       <div className={styles.button_holder}>
         <Link to="/articles">
           <button className={styles.btns}>
