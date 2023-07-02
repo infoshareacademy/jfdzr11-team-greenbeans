@@ -75,7 +75,7 @@ const Ideas = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const idea = getNewIdea(e);
-    console.log(idea.idea);
+    console.log(idea.idea, currentUser);
 
     if (!idea.idea) {
       toast.error(
@@ -126,7 +126,7 @@ const Ideas = () => {
         </div>
         </div>
         <img src="../../../assets/images/page-ideas/save.png" />
-        {currentUser ? <form onSubmit={handleSubmit} className={styles.submit}>
+        {currentUser?.uid ? <form onSubmit={handleSubmit} className={styles.submit}>
           <textarea
             name="idea"
             id="idea"
@@ -134,7 +134,9 @@ const Ideas = () => {
             placeholder="type your idea here!.."
           ></textarea>
           <button>SUBMIT</button>
-        </form> : null} 
+        </form> 
+        : null
+        } 
         {idea
           ? idea.map((idea) => {
               const date = idea?.date?.toDate().toDateString();

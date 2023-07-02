@@ -66,13 +66,13 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
           <div className={styles.btn}>
             {currentUser?.uid === auth ? 
             !edit && 
-            (<button onClick={editBtn}>edit</button>)
+            (<button className={styles.iconBtn} onClick={editBtn}></button>)
             : null}
             {edit && 
             (<>
             <button onClick={handleEdit}>EDIT</button>
             <button onClick={() => {handleDelete(id)}}>DELETE</button>
-            <button onClick={handleCancel}>CANCEL</button>
+            <button className={styles.cancel} onClick={handleCancel}>✖</button>
             </>)}
           </div>
         </>

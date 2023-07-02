@@ -47,6 +47,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+        border: none;
 }
 h1 {
   font-family: "Josefin Sans";
