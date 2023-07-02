@@ -148,6 +148,7 @@ const Ideas = () => {
                   date={date}
                   idea={idea.idea}
                   auth={idea.auth}
+                  totalLikes={idea.totalLikes}
                 />
               );
             })
