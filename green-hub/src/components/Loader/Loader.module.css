@@ -1,0 +1,8 @@
+.loader_wrapper {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	align-items: center;
+	justify-content: center;
+}
