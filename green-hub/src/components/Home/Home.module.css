@@ -14,26 +14,16 @@
   gap: 0.25rem;
 }
 
-.image_holder {
-  display: flex;
-  justify-content: center;
-}
+
 
 .home_container {
-<<<<<<< HEAD
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        max-width: 100vw;
-=======
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   max-width: 100vw;
->>>>>>> c336772a9cc7724624be20a49659755009b63268
 }
 a {
   text-decoration: none;
@@ -56,8 +46,10 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-        border: none;
+  border: none;
+  
 }
+
 h1 {
   font-family: "Josefin Sans";
   font-style: normal;
@@ -138,10 +130,10 @@ h1 {
       color: #000000;
 }
 .main_image {
-  background-color: black;
-  width: 200px;
-  height: 200px;
-  justify-self: center;
-  display: flex;
+
+  width: 500px;
+  height: 400px;
+  align-self: center;
+  background-size: cover;
 }
 
