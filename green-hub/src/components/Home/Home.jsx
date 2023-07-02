@@ -6,9 +6,10 @@ import heart from "../../../assets/images/page-main/heart.png";
 import idea from "../../../assets/images/page-main/idea.png";
 import trophy from "../../../assets/images/page-main/trophy.png";
 import cloud from "../../../assets/images/page-main/cloud.png";
-import bad from "../../../assets/images/backgrounds/help.png";
-import semi from "../../../assets/images/backgrounds/better2.png";
-import good from "../../../assets/images/backgrounds/thebest.png";
+import bad from "../../../assets/images/backgrounds/helptransparent.png";
+import semi from "../../../assets/images/backgrounds/bettertransparent.png";
+import good from "../../../assets/images/backgrounds/thebesttransparent.png";
+import background from "../../../assets/images/backgrounds/good.svg";
 
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
@@ -48,7 +49,7 @@ const Home = () => {
       console.error(error);
     }
   };
-  const { pointsTotal } = useTotalPoints(); //tu wstawić odpowiednią funkcję do pointsTotal//
+  const  { pointsTotal } = useTotalPoints();
 
   const getBackgroundImage = () => {
     if (pointsTotal >= 1500) {
@@ -61,10 +62,10 @@ const Home = () => {
   };
 
   return (
-    <div
-      className={styles.home_container}
-      style={{ backgroundImage: `url(${getBackgroundImage()})` }}
-    >
+    
+    <div className={styles.home_container} style={{backgroundImage: `url(${background})`}}>
+      
+    
       <div className={styles.login_holder}>
         {!currentUser?.uid ? (
           <>
@@ -87,7 +88,9 @@ const Home = () => {
           </>
         ) : (
           <Link to="/">
-            <button className={styles.logoutbtn} onClick={handleLogout}>
+            <button className={styles.logoutbtn}
+            style={{ backgroundImage: `url(${cloud})` }}
+             onClick={handleLogout}>
               Logout
             </button>
           </Link>
@@ -136,8 +139,13 @@ const Home = () => {
           </button>
         </Link>
       </div>
-    </div>
+      <div className={styles.main_image} style={{ backgroundImage: `url(${getBackgroundImage()})`}}>
+       
+      </div>
+      </div> 
   );
+
 };
+
 
 export default Home;
