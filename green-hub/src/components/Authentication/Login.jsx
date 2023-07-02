@@ -23,7 +23,11 @@ const Login = () => {
 			toast.success("Logged in succesfully");
 		} catch (error) {
 			setIsLoading(false);
-			toast.error("Please try again!");
+			if (error.code === "auth/user-not-found") {
+				toast.error("Invalid login");
+			} else if (error.code === "auth/wrong-password") {
+				toast.error("Invalid password");
+			} else toast.error("Something went wrong");
 		}
 	};
 	return (

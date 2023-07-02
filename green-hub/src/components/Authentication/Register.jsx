@@ -22,7 +22,8 @@ const Register = () => {
 		const password_confirm = event.target?.password_confirm.value;
 
 		if (password !== password_confirm) {
-			toast.error("Passwords must match");
+			toast.error("Invalid password confirmation");
+			console.error();
 		} else {
 			try {
 				//zmienna do przechwycenia id użytkownika z autentykacji
@@ -41,12 +42,19 @@ const Register = () => {
 				setIsLoading(false);
 
 				navigate("/");
+				//Custom'owe komunikaty błędów
 				toast.success("Sucessfully registered");
 			} catch (error) {
-				toast.error(error.code);
+				if (error.code === "auth/email-already-in-use") {
+					toast.error("User already exists");
+				} else if (error.code === "auth/weak-password") {
+					toast.error("Password is too weak");
+				} else if (error.code === "auth/invalid-email") {
+					toast.error("Please type valid e-mail");
+				} else toast.error(error.code);
 			}
-			event.target.reset();
 		}
+		event.target.reset();
 	};
 
 	return (
