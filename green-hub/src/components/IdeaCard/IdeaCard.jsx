@@ -5,17 +5,21 @@ import { db } from "../../config/firebase";
 import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
+import hasLike from "../../../assets/images/page-ideas/leaf.png"
+import doesntHaveLike from "../../../assets/images/page-ideas/leaf\ \(1\).png"
 
-const IdeaCard = ({ id, user, idea, date, auth }) => {
-
+const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
   // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
   // stan isInEdition - określa komponent aktualnie jest wyświetlany czy podlega edycji
-  
-  const [edit, setEdit] = useState(false)
+
+  const [edit, setEdit] = useState(false);
   const [isInEdition, setIsInEdition] = useState(false);
+  const [isLiked, setIsLiked] = useState(false)
   const { currentUser } = useAuth();
 
-  const editBtn = () => {setEdit(true)}
+  const editBtn = () => {
+    setEdit(true);
+  };
 
   const textArea = useRef(null);
   useEffect(() => {
@@ -37,12 +41,12 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
   };
   const handleCancel = () => {
     setIsInEdition(false);
-    setEdit(false)
+    setEdit(false);
   };
   const handleUpdate = async (e, id) => {
     e.preventDefault();
     setIsInEdition(false);
-    setEdit(false)
+    setEdit(false);
     console.log(e.target.ideaToEdit.value);
     const docRef = doc(db, "ideas", id);
 
@@ -54,6 +58,32 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
     }
   };
 
+// LAJKI
+
+console.log("isLiked", isLiked)
+const docRef = doc(db, "ideas", id)
+
+  const getLike = async (id) => {
+
+
+    setIsLiked(!isLiked);
+
+    if(!isLiked) { 
+      try {
+        await updateDoc(docRef, {totalLikes: Number(totalLikes) + 1})
+      }
+      catch {
+        console.log("nie udało się")
+      }} else {
+        try {
+          await updateDoc(docRef, {totalLikes: Number(totalLikes) - 1})
+        }
+        catch {
+          console.log("nie udało się")
+        }
+      }
+    }
+
   return (
     <div className={styles.ideaCard}>
       <div className={styles.user}>
@@ -64,23 +94,50 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
         <>
           <p>{idea}</p>
           <div className={styles.btn}>
-            {currentUser?.uid === auth ? 
-            !edit && 
-            (<button className={styles.iconBtn} onClick={editBtn}></button>)
-            : null}
-            {edit && 
-            (<>
-            <button onClick={handleEdit}>EDIT</button>
-            <button onClick={() => {handleDelete(id)}}>DELETE</button>
-            <button className={styles.cancel} onClick={handleCancel}>✖</button>
-            </>)}
+            {currentUser?.uid === auth ? (
+              !edit && (
+                <div>
+                  <div>
+                    <button className={`${styles.iconBtn} ${isLiked ? styles.hasLike : styles.doesntHaveLike}`} onClick={() => getLike(id)} 
+                    ></button>
+                    <span>{totalLikes}</span>
+                  </div>
+                  <button className={styles.iconBtn} onClick={editBtn}></button>
+                </div>
+              )
+            ) : (
+              <div className={styles.othercomments}>
+                <button
+                  disabled={!currentUser?.uid}
+                  className={`${styles.iconBtn} ${isLiked ? styles.hasLike : styles.doesntHaveLike}`}
+                  onClick={() => getLike(id)}
+                ></button>
+                <span>{totalLikes}</span>
+              </div>
+            )}
+            {edit && (
+              <>
+                <button onClick={handleEdit}>EDIT</button>
+                <button
+                  onClick={() => {
+                    handleDelete(id);
+                  }}
+                >
+                  DELETE
+                </button>
+                <button className={styles.cancel} onClick={handleCancel}>
+                  ✖
+                </button>
+              </>
+            )}
           </div>
         </>
       )}
 
       <form
         style={{ display: `${isInEdition ? "block" : "none"}` }}
-        onSubmit={(e) => handleUpdate(e, id)}>
+        onSubmit={(e) => handleUpdate(e, id)}
+      >
         <textarea
           ref={textArea}
           className={styles.edition}
@@ -91,7 +148,9 @@ const IdeaCard = ({ id, user, idea, date, auth }) => {
         ></textarea>
         <div className={styles.btn}>
           <button>CHECK</button>
-          <button type="button" onClick={handleCancel}>CANCEL</button>
+          <button type="button" onClick={handleCancel}>
+            CANCEL
+          </button>
         </div>
       </form>
     </div>
