@@ -1,3 +1,4 @@
+
 .text_holder {
   display: flex;
   flex-direction: column;
@@ -22,11 +23,8 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-     
         height: 100vh;
         max-width: 100vw;
-       
-      
 }
 a {
   text-decoration: none;
@@ -108,3 +106,31 @@ h1 {
       color: #000000;
       
 }
+
+.logoutbtn {
+    position: absolute;
+      left: 50px;
+      top: 50px;
+      width: 140px;
+      height: 140px;
+      border: none;
+      background-color: transparent;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      font-family: 'Josefin Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #000000;
+}
+.main_image {
+  background-color: black;
+  width: 200px;
+  height: 200px;
+  justify-self: center;
+  display: flex;
+}
+
