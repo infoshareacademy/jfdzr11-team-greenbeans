@@ -6,17 +6,19 @@ import DisplayPoints from "../DisplayPoints/DisplayPoints";
 
 const Navbar = () => {
   return (
-    <div className={styles.navbar}>
-      <nav>
-        <NavLink to="/">GH</NavLink>
-        {data.map((link, index) => {
-          return <NavbarLink key={index} path={link.path} icon={link.icon} />;
-        })}
-      </nav>
-      <div>
-        <DisplayPoints />
-      </div>
+    <><div className={styles.navbar}>
+    <nav>
+      <NavLink to="/">GH</NavLink>
+      {data.map((link, index) => {
+        return <NavbarLink key={index} path={link.path} icon={link.icon} />;
+      })}
+    </nav>
+    <div>
+      <DisplayPoints />
     </div>
+  </div>
+  <div className={styles.line}></div></>
+    
   );
 };
 
