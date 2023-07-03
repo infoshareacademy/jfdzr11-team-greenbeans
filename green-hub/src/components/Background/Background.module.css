@@ -173,11 +173,3 @@
     }
   }
 
-  @media (min-height: 1250px) {
-
-    .background {
-        max-height: 30rem;
-        display: flex;
-        align-self: flex-start;
-    }
-  }

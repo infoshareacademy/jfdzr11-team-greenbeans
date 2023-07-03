@@ -8,6 +8,18 @@
   width: 100%;
 }
 
+.bad { 
+  background-image: url("../../../assets/images/backgrounds/bad.svg");
+}
+
+.semi { 
+  background-image: url("../../../assets/images/backgrounds/semi.svg");
+}
+
+  .good { 
+    background-image: url("../../../assets/images/backgrounds/good.svg");
+  }
+
 .text_holder {
   display: flex;
   flex-direction: column;
