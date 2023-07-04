@@ -89,11 +89,11 @@
     opacity: 0.5;
 }
 
-/* .ideaCard button.iconBtn:first-child:disabled:hover {
-    background-image: url("../../../assets/images/page-ideas/leaf\ \(1\).png");
+.ideaCard button.iconBtn:first-child:disabled:hover {
+    /* background-image: url("../../../assets/images/page-ideas/leaf\ \(1\).png"); */
     opacity: 0.5;
     cursor: auto;
-} */
+}
 
 .ideaCard button.iconBtn {
     width: 2rem;
