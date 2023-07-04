@@ -29,45 +29,44 @@ const Register = () => {
 		//walidacja email po stronie klienta
 
 		const isValidEmail = isEmail(email);
+
 		if (isValidEmail) {
-			("");
-		} else toast.error("Please type valid e-mail");
+			if (password !== password_confirm) {
+				toast.error("Invalid password confirmation");
+			} else {
+				try {
+					//zmienna do przechwycenia id użytkownika z autentykacji
+					const registeredUser = await register(email, password);
+					setIsLoading(true);
 
-		if (password !== password_confirm) {
-			toast.error("Invalid password confirmation");
-		} else {
-			try {
-				//zmienna do przechwycenia id użytkownika z autentykacji
-				const registeredUser = await register(email, password);
-				setIsLoading(true);
+					//Dodanie danych do kolekcji users z własnym id
+					await setDoc(doc(db, "users", registeredUser.user.uid), {
+						name: event.target?.firstName.value,
+						lastName: event.target?.lastName.value,
+						isAdmin: false,
+						email: event.target?.email.value,
+						points: 0,
+						pointsTotal: 0,
+					});
 
-				//Dodanie danych do kolekcji users z własnym id
-				await setDoc(doc(db, "users", registeredUser.user.uid), {
-					name: event.target?.firstName.value,
-					lastName: event.target?.lastName.value,
-					isAdmin: false,
-					email: event.target?.email.value,
-					points: 0,
-					pointsTotal: 0,
-				});
+					setIsLoading(false);
 
-				setIsLoading(false);
+					navigate("/");
+					toast.success("Sucessfully registered");
 
-				navigate("/");
-				toast.success("Sucessfully registered");
-
-				//Custom'owe komunikaty błędów
-			} catch (error) {
-				if (error.code === "auth/email-already-in-use") {
-					toast.error("User already exists");
-				} else if (error.code === "auth/weak-password") {
-					toast.error("Password is too weak");
-				} else if (error.code === "auth/invalid-email") {
-					toast.error("Please type valid e-mail");
-				} else toast.error(error.code);
+					//Custom'owe komunikaty błędów
+				} catch (error) {
+					if (error.code === "auth/email-already-in-use") {
+						toast.error("User already exists");
+					} else if (error.code === "auth/weak-password") {
+						toast.error("Password is too weak");
+					} else if (error.code === "auth/invalid-email") {
+						toast.error("Please type valid e-mail");
+					} else toast.error(error.code);
+				}
 			}
-		}
-		event.target.reset();
+			event.target.reset();
+		} else toast.error("Please type valid e-mail");
 	};
 
 	return (
