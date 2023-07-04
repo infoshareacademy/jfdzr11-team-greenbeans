@@ -7,28 +7,40 @@ import { setDoc, doc } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
+import isEmail from "validator/lib/isEmail";
 
 const Register = () => {
-	const navigate = useNavigate();
-	const { register } = useAuth();
 	//stan ładowania do implementacji loadera
 	const [isLoading, setIsLoading] = useState(false);
+	//stany dla inputów
+	const [name, setName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+
+	const navigate = useNavigate();
+	const { register } = useAuth();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const email = event.target?.email.value;
 		const password = event.target?.password.value;
 		const password_confirm = event.target?.password_confirm.value;
 
+		//walidacja email po stronie klienta
+
+		const isValidEmail = isEmail(email);
+		if (isValidEmail) {
+			("");
+		} else toast.error("Please type valid e-mail");
+
 		if (password !== password_confirm) {
 			toast.error("Invalid password confirmation");
-			console.error();
 		} else {
 			try {
 				//zmienna do przechwycenia id użytkownika z autentykacji
 				const registeredUser = await register(email, password);
 				setIsLoading(true);
+
 				//Dodanie danych do kolekcji users z własnym id
 				await setDoc(doc(db, "users", registeredUser.user.uid), {
 					name: event.target?.firstName.value,
@@ -42,8 +54,9 @@ const Register = () => {
 				setIsLoading(false);
 
 				navigate("/");
-				//Custom'owe komunikaty błędów
 				toast.success("Sucessfully registered");
+
+				//Custom'owe komunikaty błędów
 			} catch (error) {
 				if (error.code === "auth/email-already-in-use") {
 					toast.error("User already exists");
@@ -74,31 +87,33 @@ const Register = () => {
 							onSubmit={handleSubmit}
 							className={styles.auth_form}
 						>
-							{/* <label htmlFor="firstName">Name</label> */}
 							<input
 								type="text"
 								name="firstName"
 								id="firstName"
 								placeholder="what's your name?"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
 								required
 							/>
-							{/* <label htmlFor="lastName">Lastname</label> */}
 							<input
 								type="text"
 								name="lastName"
 								id="lastName"
 								placeholder="what's your lastname?"
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
 								required
 							/>
-							{/* <label htmlFor="email">Email</label> */}
 							<input
 								type="email"
 								name="email"
 								id="email"
-								placeholder="enter your email"
+								placeholder="email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								required
 							/>
-							{/* <label htmlFor="password">Password</label> */}
 							<input
 								type="password"
 								name="password"
@@ -106,7 +121,6 @@ const Register = () => {
 								placeholder="create password"
 								required
 							/>
-							{/* <label htmlFor="password_confirm">Password confirmation</label> */}
 							<input
 								type="password"
 								name="password_confirm"
