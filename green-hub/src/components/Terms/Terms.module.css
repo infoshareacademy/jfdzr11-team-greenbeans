@@ -1,0 +1,11 @@
+.terms_container {
+  display: flex;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar_container {
+  margin-top: 0;
+}
