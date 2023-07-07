@@ -16,6 +16,7 @@ import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
 import { useTotalPoints } from "../Utils/useTotalPoints/useTotalPoints";
 import DisplayPoints from "../DisplayPoints/DisplayPoints";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
@@ -49,7 +50,7 @@ const Home = () => {
       console.error(error);
     }
   };
-  const  { pointsTotal } = useTotalPoints();
+  const { pointsTotal } = useTotalPoints();
 
   const getBackgroundImage = () => {
     if (pointsTotal >= 1500) {
@@ -62,10 +63,10 @@ const Home = () => {
   };
 
   return (
-    
-    <div className={styles.home_container} style={{backgroundImage: `url(${background})`}}>
-      
-    
+    <div
+      className={styles.home_container}
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <div className={styles.login_holder}>
         {!currentUser?.uid ? (
           <>
@@ -88,9 +89,11 @@ const Home = () => {
           </>
         ) : (
           <Link to="/">
-            <button className={styles.logoutbtn}
-            style={{ backgroundImage: `url(${cloud})` }}
-             onClick={handleLogout}>
+            <button
+              className={styles.logoutbtn}
+              style={{ backgroundImage: `url(${cloud})` }}
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </Link>
@@ -139,13 +142,12 @@ const Home = () => {
           </button>
         </Link>
       </div>
-      <div className={styles.main_image} style={{ backgroundImage: `url(${getBackgroundImage()})`}}>
-       
-      </div>
-      </div> 
+      <div
+        className={styles.main_image}
+        style={{ backgroundImage: `url(${getBackgroundImage()})` }}
+      ></div>
+    </div>
   );
-
 };
-
 
 export default Home;

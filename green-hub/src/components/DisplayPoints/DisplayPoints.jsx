@@ -7,12 +7,6 @@ const DisplayPoints = () => {
   // console.log(userPoints);
   if (isGuest == false) {
     return <div>{<p>Your points {userPoints}</p>}</div>;
-  } else {
-    return (
-      <div>
-        <p>Log in to check Your points!</p>
-      </div>
-    );
   }
 };
 

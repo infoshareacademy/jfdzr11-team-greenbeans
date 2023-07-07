@@ -1,4 +1,3 @@
-
 .text_holder {
   display: flex;
   flex-direction: column;
@@ -11,10 +10,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
-
-
 
 .home_container {
   background-size: cover;
@@ -47,7 +44,6 @@ a {
   align-items: center;
   padding: 0 10px;
   border: none;
-  
 }
 
 h1 {
@@ -111,29 +107,27 @@ h1 {
 }
 
 .logoutbtn {
-    position: absolute;
-      left: 50px;
-      top: 50px;
-      width: 140px;
-      height: 140px;
-      border: none;
-      background-color: transparent;
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      font-family: 'Josefin Sans';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      text-align: center;
-      text-transform: uppercase;
-      color: #000000;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  width: 140px;
+  height: 140px;
+  border: none;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
 }
 .main_image {
-
   width: 500px;
   height: 400px;
   align-self: center;
   background-size: cover;
 }
-
