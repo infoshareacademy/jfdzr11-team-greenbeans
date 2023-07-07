@@ -17,6 +17,11 @@ const ContactUs = () => {
   const navigate = useNavigate();
   const contactsCollectionRef = collection(db, "contacts");
 
+  const handleCancel = () => {
+    navigate("/");
+    toast.success("Returned to main page");
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -97,6 +102,9 @@ const ContactUs = () => {
             />
             <button type="submit">SEND MESSAGE</button>
           </form>
+          <button type="submit" onClick={handleCancel}>
+            Return
+          </button>
         </div>
       </div>
     </>
