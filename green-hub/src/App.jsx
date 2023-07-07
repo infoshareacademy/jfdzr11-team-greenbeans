@@ -8,7 +8,7 @@ import {
   ForgotPassword,
   AboutUs,
   ContactUs,
-  Therms,
+  Terms,
   Faq,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
@@ -32,7 +32,7 @@ function App() {
         <Route path="/prizes" element={<Prizes />}></Route>
         <Route path="/faq" element={<Faq />}></Route>
         <Route path="/aboutus" element={<AboutUs />}></Route>
-        <Route path="/therms" element={<Therms />}></Route>
+        <Route path="/terms" element={<Terms />}></Route>
         <Route path="/contactus" element={<ContactUs />}></Route>
       </Routes>
     </>

@@ -9,7 +9,9 @@ const Footer = () => {
         <li>
           <Link to="/faq">FAQ</Link>
         </li>
-        <li>About</li>
+        <li>
+          <Link to="/aboutus">About</Link>
+        </li>
         <li>Therms and conditions</li>
       </ul>
       <ul>

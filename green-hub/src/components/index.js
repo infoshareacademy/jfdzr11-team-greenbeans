@@ -11,7 +11,7 @@ import ForgotPassword from "./Authentication/ForgotPassword";
 import Prizes from "./Prizes/Prizes";
 import AboutUs from "./AboutUs/AboutUs";
 import ContactUs from "./ContactUs/ContactUs";
-import Therms from "./Therms/Therms";
+import Terms from "./Terms/Terms";
 import Faq from "./Faq/Faq";
 
 export {
@@ -28,6 +28,6 @@ export {
   Prizes,
   AboutUs,
   ContactUs,
-  Therms,
+  Terms,
   Faq,
 };
