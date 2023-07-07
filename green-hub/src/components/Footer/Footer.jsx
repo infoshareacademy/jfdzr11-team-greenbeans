@@ -1,11 +1,14 @@
-import React from 'react'
-import styles from './Footer.module.css'
+import React from "react";
+import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className={styles.footer}>
       <ul>
-        <li>FAQ</li>
+        <li>
+          <Link to="/faq">FAQ</Link>
+        </li>
         <li>About</li>
         <li>Therms and conditions</li>
       </ul>
@@ -14,7 +17,7 @@ const Footer = () => {
         <li>Support</li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

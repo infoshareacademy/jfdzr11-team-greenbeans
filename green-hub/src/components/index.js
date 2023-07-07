@@ -9,17 +9,25 @@ import Layout from "./Layout/Layout";
 import Home from "./Home/Home";
 import ForgotPassword from "./Authentication/ForgotPassword";
 import Prizes from "./Prizes/Prizes";
+import AboutUs from "./AboutUs/AboutUs";
+import ContactUs from "./ContactUs/ContactUs";
+import Therms from "./Therms/Therms";
+import Faq from "./Faq/Faq";
 
 export {
-	Ideas,
-	Navbar,
-	Footer,
-	Articles,
-	GetPoints,
-	Login,
-	Register,
-	Layout,
-	Home,
-	ForgotPassword,
-	Prizes,
+  Ideas,
+  Navbar,
+  Footer,
+  Articles,
+  GetPoints,
+  Login,
+  Register,
+  Layout,
+  Home,
+  ForgotPassword,
+  Prizes,
+  AboutUs,
+  ContactUs,
+  Therms,
+  Faq,
 };

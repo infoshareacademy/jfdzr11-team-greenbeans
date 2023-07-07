@@ -71,7 +71,7 @@ const Home = () => {
               >
                 Log In
               </button>
-            </Link>
+            </Link> */}
             {/* <Link to="/register">
               <button
                 className={styles.registerbtn}
