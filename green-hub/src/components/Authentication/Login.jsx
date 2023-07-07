@@ -6,9 +6,12 @@ import Loader from "../Loader/Loader";
 import { useState } from "react";
 
 const Login = () => {
-	const { login, currentUser } = useAuth();
 	//stan ładowania do implementacji loadera
 	const [isLoading, setIsLoading] = useState(false);
+	//stan input
+	const [email, setEmail] = useState("");
+
+	const { login, currentUser } = useAuth();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -23,7 +26,11 @@ const Login = () => {
 			toast.success("Logged in succesfully");
 		} catch (error) {
 			setIsLoading(false);
-			toast.error("Please try again!");
+			if (error.code === "auth/user-not-found") {
+				toast.error("Invalid login");
+			} else if (error.code === "auth/wrong-password") {
+				toast.error("Invalid password");
+			} else toast.error("Something went wrong");
 		}
 	};
 	return (
@@ -38,15 +45,15 @@ const Login = () => {
 							onSubmit={handleSubmit}
 							className={styles.auth_form}
 						>
-							{/* <label htmlFor="email">E-mail</label> */}
 							<input
 								type="email"
 								name="email"
 								id="email"
 								placeholder="email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								required
 							/>
-							{/* <label htmlFor="password">Password</label> */}
 							<input
 								type="password"
 								name="password"

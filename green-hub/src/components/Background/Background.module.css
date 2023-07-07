@@ -1,0 +1,175 @@
+.container {
+    display: grid;
+    justify-items: center;
+}
+
+.background {
+    width: min-content;
+    height: 100%;
+    min-height: 22rem;
+    min-width: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    position: relative;
+}
+
+.tree {
+    width: 7rem;
+    height: 7rem;
+    background-image: url("../../../assets/images/page-main/tree-11.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left:8%;
+    bottom: 15%;
+}
+
+.tree1 {
+    width: 5rem;
+    height: 5rem;
+    background-image: url("../../../assets/images/page-main/tree-12.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right:18%;
+    bottom: 13%;
+}
+
+.tree2 {
+    width: 7rem;
+    height: 7rem;
+    background-image: url("../../../assets/images/page-main/tree-12.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+}
+
+.sun {
+    width: 6rem;
+    height: 6rem;
+    background-image: url("../../../assets/images/page-main/sun.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 10%;
+    left: 0;
+}
+
+.plant {
+    width: 4rem;
+    height: 4rem;
+    background-image: url("../../../assets/images/page-main/plant-11.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 12%;
+    z-index: 2;
+}
+
+.cloud {
+    width: 7rem;
+    height: 7rem;
+    background-image: url("../../../assets/images/page-main/cloud.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+}
+
+.background .cloud:first-child {
+    width: 5rem;
+    height: 5rem;
+    top: 20%;
+    left: 30%;
+}
+
+.background .cloud:nth-child(2) {
+    top: 10%;
+    left: 0;
+}
+
+.background .cloud:nth-child(3) {
+    top: 15%;
+    right: 0;
+}
+
+.trash {
+    width: 9rem;
+    height: 9rem;
+    background-image: url("../../../assets/images/page-main/trash.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+}
+
+.garbage {
+    width: 7rem;
+    height: 7rem;
+    background-image: url("../../../assets/images/page-main/garbage-bag.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left:3%;
+    bottom: 10%;
+}
+
+.garbage1 {
+    width: 5rem;
+    height: 5rem;
+    background-image: url("../../../assets/images/page-main/garbage-bag.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 17%;
+    bottom: 9%;
+}
+
+.garbage2 {
+    width: 6rem;
+    height: 6rem;
+    background-image: url("../../../assets/images/page-main/garbage-bag.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+}
+
+
+.bin {
+    width: 6rem;
+    height: 6rem;
+    background-image: url("../../../assets/images/page-main/recycle-bin.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+}
+
+.background .para {
+    position: absolute;
+    bottom: -1rem;
+    margin: 0;
+    font-size: 1.2rem;
+  font-weight: 400;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  line-height: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 370px) {
+
+    .tree, .tree1, .tree2, .bin, .garbage, .garbage1, .garbage2, .plant, .trash {
+        bottom: 17%;
+    }
+    
+    .background {
+        min-width: 19rem;
+    }
+  }
+

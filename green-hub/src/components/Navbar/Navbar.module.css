@@ -2,6 +2,17 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    background-color: #F1F5F0;
+    z-index: 5;
+    border-bottom: solid 0.12rem #8EA389;
+}
+
+.line {
+    width: 100%;
+    border-bottom: solid 0.15rem #8EA389;
+    filter: blur(0.3rem);
 }
 
 .navbar nav {

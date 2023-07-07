@@ -5,18 +5,14 @@ import copywriting from "../../../assets/images/page-main/copywriting.png";
 import heart from "../../../assets/images/page-main/heart.png";
 import idea from "../../../assets/images/page-main/idea.png";
 import trophy from "../../../assets/images/page-main/trophy.png";
-import cloud from "../../../assets/images/page-main/cloud.png";
-import bad from "../../../assets/images/backgrounds/helptransparent.png";
-import semi from "../../../assets/images/backgrounds/bettertransparent.png";
-import good from "../../../assets/images/backgrounds/thebesttransparent.png";
-import background from "../../../assets/images/backgrounds/good.svg";
 
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
-import { useTotalPoints } from "../Utils/useTotalPoints/useTotalPoints";
-import DisplayPoints from "../DisplayPoints/DisplayPoints";
+import Background from "../Background/Background";
 import Footer from "../Footer/Footer";
+import DisplayPoints from "../DisplayPoints/DisplayPoints";
+import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
@@ -50,27 +46,25 @@ const Home = () => {
       console.error(error);
     }
   };
-  const { pointsTotal } = useTotalPoints();
+
+  const { userPoints } = UseUserPoints();
 
   const getBackgroundImage = () => {
-    if (pointsTotal >= 1500) {
-      return good;
-    } else if (pointsTotal >= 1000 && pointsTotal < 1500) {
-      return semi;
+    if (userPoints >= 1300) {
+      return styles.good;
+    } else if (userPoints >= 800 && userPoints < 1300) {
+      return styles.semi;
     } else {
-      return bad;
+      return styles.bad;
     }
   };
 
   return (
-    <div
-      className={styles.home_container}
-      style={{ backgroundImage: `url(${background})` }}
-    >
+    <div className={`${styles.home_container} ${getBackgroundImage()}`}>
       <div className={styles.login_holder}>
         {!currentUser?.uid ? (
           <>
-            <Link to="/login">
+            {/* <Link to="/login">
               <button
                 className={styles.loginbtn}
                 style={{ backgroundImage: `url(${cloud})` }}
@@ -78,16 +72,28 @@ const Home = () => {
                 Log In
               </button>
             </Link>
-            <Link to="/register">
+            {/* <Link to="/register">
               <button
                 className={styles.registerbtn}
                 style={{ backgroundImage: `url(${cloud})` }}
               >
                 Register
               </button>
+            </Link> */}
+            <Link to="/register">
+              <div className={styles.cloud2}>
+                <button className={styles.registerbtn}>Register</button>
+              </div>
             </Link>
           </>
         ) : (
+          // <Link to="/">
+          //   <button className={styles.logoutbtn}
+          //   style={{ backgroundImage: `url(${cloud})` }}
+          //    onClick={handleLogout}>
+          //     Logout
+          //   </button>
+          // </Link>
           <Link to="/">
             <button
               className={styles.logoutbtn}
@@ -106,7 +112,7 @@ const Home = () => {
         {!currentUser?.uid ? (
           <>
             <h1>Hello friend!</h1>
-            <h2>Its nice to meet You!</h2>
+            <h2>Nice to meet U!</h2>
           </>
         ) : (
           <>
@@ -114,7 +120,6 @@ const Home = () => {
             <h2>Its a pleasure to see U again!</h2>
           </>
         )}
-        <p> Lets help our planet!</p>
       </div>
       <div className={styles.button_holder}>
         <Link to="/articles">
