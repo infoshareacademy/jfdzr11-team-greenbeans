@@ -89,8 +89,45 @@
 
 .ideas main .imagesPack + p {
   font-size: 1.4rem;
+  text-align: center;
 }
 
 .ideas p + div {
   display: flex;
+}
+
+@media (max-width: 420px) {
+  .ideas h1 {
+      letter-spacing: 1rem;
+  }
+
+  .ideas p + div {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+}
+
+@media (max-width: 570px) {
+  .ideas form.submit textarea{
+    width: 70vw;
+  }
+
+  .imagesPack {
+    justify-content: center;
+  }
+
+  p + div.imagesPack {
+    display: flex;
+  }
+
+  .ideas main .imagesPack + p {
+    margin: 0;
+  }
+
+  .ideas div + img {
+    margin: 4rem 0;
+  }
+
 }
