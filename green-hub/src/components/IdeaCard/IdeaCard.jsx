@@ -77,7 +77,8 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
       }
     } else {
       try {
-        await updateDoc(docRef, { totalLikes: Number(totalLikes) - 1, usersLikes: [...usersLikes].filter(userId => userId !== currentUser.uid) });
+        const updatedUsersLikes = usersLikes.filter(userId => userId !== currentUser.uid)
+        await updateDoc(docRef, { totalLikes: Number(totalLikes) - 1, usersLikes: updatedUsersLikes });
       } catch {
         console.log("nie udało się");
       }

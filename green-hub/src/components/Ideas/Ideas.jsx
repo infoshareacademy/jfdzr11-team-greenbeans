@@ -9,6 +9,8 @@ import {
   orderBy,
   onSnapshot,
   query,
+  getDoc,
+  doc
 } from "firebase/firestore";
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
@@ -29,18 +31,32 @@ const Ideas = () => {
       const filteredData = data.docs.map((doc) => ({
         ...doc.data()
       }))
-      const user = filteredData.filter(user => user.email === currentUser.email)
-      const userName = `${user[0].name} ${user[0].lastName}`
-      console.log(userName)
+      console.log('fileteredData: ', filteredData)
+      const userData = filteredData?.filter(el => el.email === currentUser.email)
+      console.log('user: ', userData, 'currentUser: ', currentUser)
+      const userName = `${userData[0].name} ${userData[0].lastName}`
+      console.log("user - czy jesteś tu: ", userName)
       setUser(userName);
-    } catch {
-      console.log("no user here");
+    } catch (error) {
+      console.log("no user here", currentUser);
+      console.error(error)
     }
   }
-  
+
   useEffect(() => {
     getUser();
+    // getUser2()
   }, [])
+
+  // const getUser2 = async () => {
+  //   try {
+  //     const user = await getDoc(doc(db, "users", currentUser?.uid))
+  //     console.log('user z II sposobu: ',user.data())
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
 
   // WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
   const q = query(ideasCollectionRef, orderBy("date", "desc"));
