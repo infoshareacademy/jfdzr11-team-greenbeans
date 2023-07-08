@@ -8,3 +8,8 @@
 .navbar_container {
   margin-top: 0;
 }
+
+.question_container {
+  padding: 1rem 0.5rem;
+  padding-right: 1rem;
+}
