@@ -34,3 +34,36 @@
     grid-template-columns: repeat(3, 14rem);
     grid-auto-rows: 12rem;
 }
+
+
+@media (max-width: 740px) {
+    .prizeBox {
+        grid-template-columns: repeat(2, 14rem);
+    }
+
+    .prizes main p {
+        width: 90%; 
+    }
+}
+
+@media (max-width: 670px) {
+    :root {
+      font-size: 14px;
+    }
+}
+
+@media (max-width: 470px) {
+    .prizeBox {
+        grid-template-columns: repeat(1, 14rem);
+    }
+
+    .prizes main p {
+        width: 90%; 
+    }
+}
+
+@media (max-width: 420px) {
+    .prizes h1 {
+        letter-spacing: 1rem;
+    }
+}
