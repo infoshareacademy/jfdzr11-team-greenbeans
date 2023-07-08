@@ -64,7 +64,8 @@ const Ideas = () => {
       user: user,
       idea: e.target.idea.value,
       date: Timestamp.fromDate(new Date()),
-      auth: currentUser.uid
+      auth: currentUser.uid,
+      totalLikes: 0
     };
     e.target.reset();
     console.log(currentUser.email)

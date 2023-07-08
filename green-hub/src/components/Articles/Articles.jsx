@@ -4,7 +4,6 @@ import jsonData from "../../components/Articles/data.json";
 import heart from "../../../assets/images/page-articles/heart.png";
 import pinkHeart from "../../../assets/images/page-articles/pinkheart.png";
 import Navbar from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
 import useAuth from "../../context/AuthContext";
 
 const Articles = () => {

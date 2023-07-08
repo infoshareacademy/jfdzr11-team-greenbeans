@@ -5,12 +5,11 @@ import copywriting from "../../../assets/images/page-main/copywriting.png";
 import heart from "../../../assets/images/page-main/heart.png";
 import idea from "../../../assets/images/page-main/idea.png";
 import trophy from "../../../assets/images/page-main/trophy.png";
-
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
 import Background from "../Background/Background";
-import Footer from "../Footer/Footer"
+import Footer from "../Footer/Footer";
 import DisplayPoints from "../DisplayPoints/DisplayPoints";
 import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
 
@@ -60,58 +59,29 @@ const Home = () => {
   };
 
   return (
-    
     <div className={`${styles.home_container} ${getBackgroundImage()}`}>
       <div className={styles.login_holder}>
         {!currentUser?.uid ? (
           <>
-            {/* <Link to="/login">
-              <button
-                className={styles.loginbtn}
-                style={{ backgroundImage: `url(${cloud})` }}
-              >
-                Log In
-              </button>
-            </Link> */}
             <Link to="/login">
               <div className={styles.cloud1}>
-              <button className={styles.loginbtn}>
-                Log In
-              </button>
+                <button className={styles.loginbtn}>Log In</button>
               </div>
             </Link>
-            {/* <Link to="/register">
-              <button
-                className={styles.registerbtn}
-                style={{ backgroundImage: `url(${cloud})` }}
-              >
-                Register
-              </button>
-            </Link> */}
             <Link to="/register">
               <div className={styles.cloud2}>
-              <button className={styles.registerbtn}>
-                Register
-              </button>
+                <button className={styles.registerbtn}>Register</button>
               </div>
             </Link>
           </>
         ) : (
-          // <Link to="/">
-          //   <button className={styles.logoutbtn}
-          //   style={{ backgroundImage: `url(${cloud})` }}
-          //    onClick={handleLogout}>
-          //     Logout
-          //   </button>
-          // </Link>
           <Link to="/">
             <div className={styles.cloud1}>
-            <button className={styles.logoutbtn}
-           onClick={handleLogout}>
-            Logout
-          </button>
+              <button className={styles.logoutbtn} onClick={handleLogout}>
+                Logout
+              </button>
             </div>
-        </Link>
+          </Link>
         )}
         <div className={styles.points_container}>
           <DisplayPoints />
@@ -155,16 +125,11 @@ const Home = () => {
             <img className={styles.icon} src={trophy}></img>
           </button>
         </Link>
-        
       </div>
-      {/* <div></div> */}
-      <Background/>
+      <Background />
       <Footer />
-      {/* <div className={styles.main_image} style={{ backgroundImage: `url(${getBackgroundImage()})`}}></div> */}
-      </div> 
+    </div>
   );
-
 };
-
 
 export default Home;

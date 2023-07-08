@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import styles from './Background.module.css'
 import useAuth from '../../context/AuthContext'
 import { UseUserPoints } from '../Utils/UseUserPoints/UseUserPoints'
