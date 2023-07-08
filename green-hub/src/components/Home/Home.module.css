@@ -8,17 +8,17 @@
   width: 100%;
 }
 
-.bad { 
+.bad {
   background-image: url("../../../assets/images/backgrounds/bad.svg");
 }
 
-.semi { 
+.semi {
   background-image: url("../../../assets/images/backgrounds/semi.svg");
 }
 
-  .good { 
-    background-image: url("../../../assets/images/backgrounds/good.svg");
-  }
+.good {
+  background-image: url("../../../assets/images/backgrounds/good.svg");
+}
 
 .text_holder {
   display: flex;
@@ -33,16 +33,16 @@
   font-weight: 400;
   font-size: 50px;
   line-height: 50px; */
-    text-align: center;
-    text-shadow: 10px 10px 10px #8EA389;
-    letter-spacing: 0.3rem;
-    font-size: 3rem;
-    font-weight: 400;
-    /* letter-spacing: 50%; */
-    margin: 10% 0 1.5rem 0;
-    text-shadow: none;
-    text-transform: uppercase;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  text-shadow: 10px 10px 10px #8ea389;
+  letter-spacing: 0.3rem;
+  font-size: 3rem;
+  font-weight: 400;
+  /* letter-spacing: 50%; */
+  margin: 10% 0 1.5rem 0;
+  text-shadow: none;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .home_container h2 {
@@ -91,7 +91,7 @@
   /* text-align: center; */
   text-transform: uppercase;
   color: #000000;
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25))
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 }
 
 .logoutbtn {
@@ -113,15 +113,15 @@
     text-transform: uppercase;
     color: #000000;
     filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25)) */
-    position: absolute;
-    left: 1.2rem;
-    top: 3.6rem;
-    border: none;
-    font-weight: 400;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    background-color: transparent;
-    color: #000000;
+  position: absolute;
+  left: 1.2rem;
+  top: 3.6rem;
+  border: none;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #000000;
 }
 
 div.cloud1 {
@@ -152,7 +152,9 @@ div.cloud2 {
   cursor: auto;
 }
 
-.loginbtn:hover, .registerbtn:hover, .logoutbtn:hover {
+.loginbtn:hover,
+.registerbtn:hover,
+.logoutbtn:hover {
   font-weight: 800;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -166,7 +168,6 @@ div.cloud2 {
   gap: 0.5rem;
   margin: 2rem 0;
 }
-
 
 a {
   text-decoration: none;
@@ -189,7 +190,7 @@ a {
   padding: 0 10px;
   border: none;
   position: relative;
-    /* font-family: "Josefin Sans"; */
+  /* font-family: "Josefin Sans"; */
   /* font-style: normal; */
   /* font-weight: 400; */
   /* line-height: 35px; */
@@ -216,13 +217,11 @@ a {
   /* align-self: flex-end; */
 }
 
-
 .points_container {
   position: absolute;
   top: 1rem;
   right: 2rem;
 }
-
 
 .main_image {
   width: 500px;
@@ -232,7 +231,6 @@ a {
 }
 
 @media (max-width: 1000px) {
-
   div.cloud2 {
     left: 9rem;
     top: 0;
@@ -242,7 +240,7 @@ a {
 
   .home_container h1 {
     margin: 15% 0 1.5rem 0;
-}
+  }
 }
 
 @media (max-width: 800px) {
@@ -253,17 +251,16 @@ a {
   }
 
   .home_container h1 {
-      margin: 20% 0 1.5rem 0;
+    margin: 20% 0 1.5rem 0;
   }
 }
 
 @media (max-width: 670px) {
-
   :root {
     font-size: 14px;
   }
   .home_container h1 {
-      margin: 25% 0 1.5rem 0;
+    margin: 25% 0 1.5rem 0;
   }
   .registerbtn {
     left: -0.3rem;
@@ -272,9 +269,8 @@ a {
 }
 
 @media (max-width: 530px) {
-
   .home_container h1 {
-      margin: 33% 0 1.5rem 0;
+    margin: 33% 0 1.5rem 0;
   }
 }
 
@@ -286,13 +282,12 @@ a {
   }
 
   .home_container h1 {
-      margin: 40% 0 1.5rem 0;
+    margin: 40% 0 1.5rem 0;
   }
 }
 
 @media (max-width: 300px) {
-
   .home_container h1 {
-      margin: 50% 0 1.5rem 0;
+    margin: 50% 0 1.5rem 0;
   }
 }
