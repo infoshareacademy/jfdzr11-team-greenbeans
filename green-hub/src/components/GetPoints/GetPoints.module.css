@@ -1,29 +1,29 @@
 .getpoints {
-    width: 100%;
-    display: grid;
+  width: 100%;
+  display: grid;
 }
 
 .getpoints main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .getpoints h1 {
-    text-align: center;
-    text-shadow: 10px 10px 10px #8EA389;
-    letter-spacing: 2rem;
-    font-size: 4rem;
-    letter-spacing: 50%;
-    margin: 4rem 0 2.5rem 0;
+  text-align: center;
+  text-shadow: 10px 10px 10px #8ea389;
+  letter-spacing: 2rem;
+  font-size: 4rem;
+  letter-spacing: 50%;
+  margin: 4rem 0 2.5rem 0;
 }
 
 .getpoints main h1 + p {
-    padding: 1rem;
-    width: 43rem;
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.5rem;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: right;  
+  padding: 1rem;
+  width: 43rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: right;
 }
