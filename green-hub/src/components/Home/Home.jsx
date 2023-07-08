@@ -28,6 +28,7 @@ const Home = () => {
         (user) => user.email === currentUser.email
       );
       const userName = `${user[0].name}`;
+      console.log(userName)
       setUser(userName);
     } catch {
       console.log("no user here");
