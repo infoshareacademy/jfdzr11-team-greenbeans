@@ -214,3 +214,50 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+@media (max-width: 600px) {
+    .getpointsBox {
+        grid-template-columns: 10rem 1fr 7rem;
+        margin: 0 1.5rem 3rem 1.5rem;
+    }
+
+    div.img {
+        align-self: center;
+    }
+
+}
+
+@media (max-width: 520px) {
+    .getpointsBox {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: 
+        "para img"
+        "para btn";
+        margin-bottom: 4rem;
+    }
+
+    .getpointsBox .paragraph {
+        grid-area: para;
+    }
+
+    div.img {
+        width: 7rem;
+        height: 5rem;
+        margin: 0 auto 0.5rem auto;
+        align-self: flex-end;
+    }
+
+    div.img img {
+        width: 4.5rem;
+    }
+
+    .getpointsBox button {
+        margin: 0.5rem auto 0 auto;
+        align-self: flex-start;
+    }
+
+    .getpointsBox .paragraph {
+        padding: 1rem;
+    }
+
+}
