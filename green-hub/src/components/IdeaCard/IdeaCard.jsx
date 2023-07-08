@@ -6,7 +6,7 @@ import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 
-const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
+const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
   // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
   // stan isInEdition - określa komponent aktualnie jest wyświetlany czy podlega edycji
 
@@ -14,6 +14,10 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
   const [isInEdition, setIsInEdition] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const { currentUser } = useAuth();
+
+  useEffect(() => {
+    if(usersLikes.includes(currentUser.uid)) { setIsLiked(true)}
+  }, [])
 
   const editBtn = () => {
     setEdit(true);
@@ -50,6 +54,7 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
 
     try {
       await updateDoc(docRef, { idea: e.target.ideaToEdit.value });
+      console.log(auth)
       toast.success("Changes saved");
     } catch {
       toast.error("Something went wrong");
@@ -60,17 +65,19 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
 
   const getLike = async (id) => {
     const docRef = doc(db, "ideas", id);
+    console.log(docRef)
     setIsLiked(!isLiked);
 
     if (!isLiked) {
       try {
-        await updateDoc(docRef, { totalLikes: Number(totalLikes) + 1 });
+        await updateDoc(docRef, { totalLikes: Number(totalLikes) + 1, usersLikes: [...usersLikes, currentUser.uid] });
+        console.log(usersLikes, currentUser.uid)
       } catch {
         console.log("nie udało się");
       }
     } else {
       try {
-        await updateDoc(docRef, { totalLikes: Number(totalLikes) - 1 });
+        await updateDoc(docRef, { totalLikes: Number(totalLikes) - 1, usersLikes: [...usersLikes].filter(userId => userId !== currentUser.uid) });
       } catch {
         console.log("nie udało się");
       }

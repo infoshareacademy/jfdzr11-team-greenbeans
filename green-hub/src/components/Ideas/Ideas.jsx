@@ -65,10 +65,11 @@ const Ideas = () => {
       idea: e.target.idea.value,
       date: Timestamp.fromDate(new Date()),
       auth: currentUser.uid,
-      totalLikes: 0
+      totalLikes: 0,
+      usersLikes: []
     };
     e.target.reset();
-    console.log(currentUser.email)
+    console.log('to czego szukam: ', user)
     return newIdea;
   };
 
@@ -150,6 +151,7 @@ const Ideas = () => {
                   idea={idea.idea}
                   auth={idea.auth}
                   totalLikes={idea.totalLikes}
+                  usersLikes={idea.usersLikes}
                 />
               );
             })
