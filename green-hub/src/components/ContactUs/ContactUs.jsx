@@ -55,7 +55,7 @@ const ContactUs = () => {
             Fill up this form!
           </h1>
           <form onSubmit={handleSubmit} className={styles.contact_form}>
-            <input
+            <select
               type="text"
               name="type"
               id="type"
@@ -63,7 +63,10 @@ const ContactUs = () => {
               value={type}
               onChange={(e) => setType(e.target.value)}
               required
-            />
+            >
+              <option>Business</option>
+              <option>Private</option>
+            </select>
             <input
               type="text"
               name="name"

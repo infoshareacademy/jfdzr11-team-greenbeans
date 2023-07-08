@@ -9,7 +9,7 @@ const Terms = () => {
         <Navbar />
       </div>
       <div className={styles.text_container}>
-        <h1>
+        <h1 className={styles.header}>
           Terms and Conditions for <b>Green Hub</b>
         </h1>
         <h2>

@@ -5,6 +5,7 @@ import heart from "../../../assets/images/page-articles/heart.png";
 import pinkHeart from "../../../assets/images/page-articles/pinkheart.png";
 import Navbar from "../Navbar/Navbar";
 import useAuth from "../../context/AuthContext";
+import Footer from "../Footer/Footer";
 
 const Articles = () => {
   const [articleData, setArticleData] = useState(null);
@@ -57,6 +58,7 @@ const Articles = () => {
             </div>
           ))}
       </div>
+      <Footer />
     </>
   );
 };
