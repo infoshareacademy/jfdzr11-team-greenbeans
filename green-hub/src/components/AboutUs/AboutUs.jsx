@@ -11,25 +11,20 @@ const AboutUs = () => {
       </div>
       <div className={styles.text_container}>
         <h2 className={styles.quote1}>
-          <i>
             Probably the most visible example of unintended consequences, is
             what happens every time humans try to change the natural ecology of
             a place.
-          </i>
         </h2>
         <p className={styles.author1}>
           <b>- Margaret J. Wheatley</b>
         </p>
         <h2 className={styles.quote2}>
-          <i>
             The first law of ecology is that everything is related to everything
             else.
-          </i>
         </h2>
         <p className={styles.author2}>
           <b>- Barry Commoner</b>
         </p>
-
         <p className={styles.main_text}>
           These two quotas are very important to us. We have decided to create
           Green Hub, to help our mother Earth in recovery from years of

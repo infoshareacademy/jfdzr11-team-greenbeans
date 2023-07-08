@@ -1,4 +1,4 @@
-import styles from "../Terms/Terms";
+import styles from "./Terms.module.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
@@ -8,14 +8,9 @@ const Terms = () => {
       <div className={styles.navbar_container}>
         <Navbar />
       </div>
+      <h1>Terms and Conditions</h1>
       <div className={styles.text_container}>
-        <h1 className={styles.header}>
-          Terms and Conditions for <b>Green Hub</b>
-        </h1>
-        <h2>
-          Last Updated:
-          <b> 08.07.2023</b>
-        </h2>
+        <h2>Last Updated: 08.07.2023</h2>
         <p>
           Acceptance of Terms By downloading, accessing, or using{" "}
           <b>Green Hub</b> (referred to as{" "}
