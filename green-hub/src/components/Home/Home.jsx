@@ -12,6 +12,7 @@ import Background from "../Background/Background";
 import Footer from "../Footer/Footer";
 import DisplayPoints from "../DisplayPoints/DisplayPoints";
 import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
+import { toast } from "react-hot-toast";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
@@ -42,8 +43,9 @@ const Home = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      toast.success("Logged out succesfully");
     } catch (error) {
-      console.error(error);
+      toast.error("Failed to log out");
     }
   };
 

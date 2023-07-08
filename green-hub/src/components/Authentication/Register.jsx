@@ -10,130 +10,135 @@ import Loader from "../Loader/Loader";
 import isEmail from "validator/lib/isEmail";
 
 const Register = () => {
-	//stan ładowania do implementacji loadera
-	const [isLoading, setIsLoading] = useState(false);
-	//stany dla inputów
-	const [name, setName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
+  //stan ładowania do implementacji loadera
+  const [isLoading, setIsLoading] = useState(false);
+  //stany dla inputów
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
 
-	const navigate = useNavigate();
-	const { register } = useAuth();
+  const navigate = useNavigate();
+  const { register } = useAuth();
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
+  const handleCancel = () => {
+    navigate("/");
+    toast.success("Returned to main page");
+  };
 
-		const password = event.target?.password.value;
-		const password_confirm = event.target?.password_confirm.value;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-		//walidacja email po stronie klienta
+    const password = event.target?.password.value;
+    const password_confirm = event.target?.password_confirm.value;
 
-		const isValidEmail = isEmail(email);
+    //walidacja email po stronie klienta
 
-		if (isValidEmail) {
-			if (password !== password_confirm) {
-				toast.error("Invalid password confirmation");
-			} else {
-				try {
-					//zmienna do przechwycenia id użytkownika z autentykacji
-					const registeredUser = await register(email, password);
-					setIsLoading(true);
+    const isValidEmail = isEmail(email);
 
-					//Dodanie danych do kolekcji users z własnym id
-					await setDoc(doc(db, "users", registeredUser.user.uid), {
-						name: event.target?.firstName.value,
-						lastName: event.target?.lastName.value,
-						isAdmin: false,
-						email: event.target?.email.value,
-						points: 0,
-						pointsTotal: 0,
-					});
+    if (isValidEmail) {
+      if (password !== password_confirm) {
+        toast.error("Invalid password confirmation");
+      } else {
+        try {
+          //zmienna do przechwycenia id użytkownika z autentykacji
+          const registeredUser = await register(email, password);
+          setIsLoading(true);
 
-					setIsLoading(false);
+          //Dodanie danych do kolekcji users z własnym id
+          await setDoc(doc(db, "users", registeredUser.user.uid), {
+            name: event.target?.firstName.value,
+            lastName: event.target?.lastName.value,
+            isAdmin: false,
+            email: event.target?.email.value,
+            points: 0,
+            pointsTotal: 0,
+          });
 
-					navigate("/");
-					toast.success("Sucessfully registered");
+          setIsLoading(false);
 
-					//Custom'owe komunikaty błędów
-				} catch (error) {
-					if (error.code === "auth/email-already-in-use") {
-						toast.error("User already exists");
-					} else if (error.code === "auth/weak-password") {
-						toast.error("Password is too weak");
-					} else if (error.code === "auth/invalid-email") {
-						toast.error("Please type valid e-mail");
-					} else toast.error(error.code);
-				}
-			}
-			event.target.reset();
-		} else toast.error("Please type valid e-mail");
-	};
+          navigate("/");
+          toast.success("Sucessfully registered");
 
-	return (
-		<>
-			{isLoading ? (
-				<Loader />
-			) : (
-				<div className={styles.layout}>
-					<div className={styles.auth_container}>
-						<h1>
-							Hi! I'm plant{" "}
-							<img src="../../../assets/images/page-main/plant-11.png" />,
-							<br></br>
-							let introduce yourself!
-						</h1>
-						<form
-							onSubmit={handleSubmit}
-							className={styles.auth_form}
-						>
-							<input
-								type="text"
-								name="firstName"
-								id="firstName"
-								placeholder="what's your name?"
-								value={name}
-								onChange={(e) => setName(e.target.value)}
-								required
-							/>
-							<input
-								type="text"
-								name="lastName"
-								id="lastName"
-								placeholder="what's your lastname?"
-								value={lastName}
-								onChange={(e) => setLastName(e.target.value)}
-								required
-							/>
-							<input
-								type="email"
-								name="email"
-								id="email"
-								placeholder="email"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								required
-							/>
-							<input
-								type="password"
-								name="password"
-								id="password"
-								placeholder="create password"
-								required
-							/>
-							<input
-								type="password"
-								name="password_confirm"
-								id="password_confirm"
-								placeholder="confirm password"
-								required
-							/>
-							<button type="submit">REGISTER</button>
-						</form>
-					</div>
-				</div>
-			)}
-		</>
-	);
+          //Custom'owe komunikaty błędów
+        } catch (error) {
+          if (error.code === "auth/email-already-in-use") {
+            toast.error("User already exists");
+          } else if (error.code === "auth/weak-password") {
+            toast.error("Password is too weak");
+          } else if (error.code === "auth/invalid-email") {
+            toast.error("Please type valid e-mail");
+          } else toast.error(error.code);
+        }
+      }
+      event.target.reset();
+    } else toast.error("Please type valid e-mail");
+  };
+
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={styles.layout}>
+          <div className={styles.auth_container}>
+            <h1>
+              Hi! I'm plant{" "}
+              <img src="../../../assets/images/page-main/plant-11.png" />,
+              <br></br>
+              let introduce yourself!
+            </h1>
+            <form onSubmit={handleSubmit} className={styles.auth_form}>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="what's your name?"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="what's your lastname?"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="create password"
+                required
+              />
+              <input
+                type="password"
+                name="password_confirm"
+                id="password_confirm"
+                placeholder="confirm password"
+                required
+              />
+              <button type="submit">REGISTER</button>
+            </form>
+            <button type="submit" onClick={handleCancel}>
+              Return
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Register;
