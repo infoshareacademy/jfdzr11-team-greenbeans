@@ -5,7 +5,6 @@ import Articles from "./Articles/Articles";
 import GetPoints from "./GetPoints/GetPoints";
 import Login from "./Authentication/Login";
 import Register from "./Authentication/Register";
-import Layout from "./Layout/Layout";
 import Home from "./Home/Home";
 import ForgotPassword from "./Authentication/ForgotPassword";
 import Prizes from "./Prizes/Prizes";
@@ -15,6 +14,11 @@ import Terms from "./Terms/Terms";
 import Faq from "./Faq/Faq";
 
 export {
+  Prizes,
+  AboutUs,
+  ContactUs,
+  Terms,
+  Faq,
   Ideas,
   Navbar,
   Footer,
@@ -22,12 +26,6 @@ export {
   GetPoints,
   Login,
   Register,
-  Layout,
   Home,
-  ForgotPassword,
-  Prizes,
-  AboutUs,
-  ContactUs,
-  Terms,
-  Faq,
+  ForgotPassword
 };

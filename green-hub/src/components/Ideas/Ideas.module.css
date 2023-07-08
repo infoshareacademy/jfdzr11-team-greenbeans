@@ -1,96 +1,96 @@
 .ideas {
-    width: 100%;
-    display: grid;
+  width: 100%;
+  display: grid;
 }
 
 .ideas main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ideas h1 {
-    text-align: center;
-    text-shadow: 10px 10px 10px #8EA389;
-    letter-spacing: 2rem;
-    font-size: 4rem;
-    letter-spacing: 50%;
-    margin: 4rem 0 2.5rem 0;
+  text-align: center;
+  text-shadow: 10px 10px 10px #8ea389;
+  letter-spacing: 2rem;
+  font-size: 4rem;
+  letter-spacing: 50%;
+  margin: 4rem 0 2.5rem 0;
 }
 
 .ideas main p {
-    padding: 1rem;
-    max-width: 43rem;
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.5rem;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+  padding: 1rem;
+  max-width: 43rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .ideas h1 + p {
-    text-align: right;
+  text-align: right;
 }
 
 .ideas input {
-    border: none;
-    width: 30rem;
-    height: 7rem;
+  border: none;
+  width: 30rem;
+  height: 7rem;
 }
 
 .ideas form.submit textarea {
-    border: none;
-    width: 30rem;
-    height: 7rem;
-    font-size: 1rem;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: #D9D9D9;
-    resize: none;
+  border: none;
+  width: 30rem;
+  height: 7rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #d9d9d9;
+  resize: none;
 }
 
 .ideas form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .ideas form.submit button {
-    align-self:flex-end;
-    width: 7rem;
-    margin: 1rem 0 4rem 0;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    background-color: #8EA38A;
-    color: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  align-self: flex-end;
+  width: 7rem;
+  margin: 1rem 0 4rem 0;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #8ea38a;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .ideas form.submit button:hover {
-    cursor: pointer;
-    background-color: hsla(0, 0%, 85%, 0.5);
-    color:#8EA38A;
+  cursor: pointer;
+  background-color: hsla(0, 0%, 85%, 0.5);
+  color: #8ea38a;
 }
 
 .ideas div + img {
-    width: 8rem;
-    margin-bottom: 8rem;
+  width: 8rem;
+  margin-bottom: 8rem;
 }
 
 .imagesPack {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .imagesPack img {
-    width: 2rem;
+  width: 2rem;
 }
 
 .ideas main .imagesPack + p {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 .ideas p + div {
-    display: flex;
+  display: flex;
 }

@@ -11,11 +11,8 @@ const GetPointsBox = ({icon, title, description, scaler, scale, isButton = true}
 
   const [visible, setVisible] = useState(false);
   const [score, setScore] = useState(0)
-
   const { userPoints } = UseUserPoints();
   const {currentUser} = useAuth()
-
-  // const result = userPoints + e.currentTarget.points.value
 
   const closeBox = () => {
     setVisible(false);
@@ -66,9 +63,7 @@ const GetPointsBox = ({icon, title, description, scaler, scale, isButton = true}
           </div>
           
           <button>CONFIRM</button>
-        </form>
-        
-               
+        </form>        
       </Modal>
         </div>
   )

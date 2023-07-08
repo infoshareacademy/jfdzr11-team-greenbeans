@@ -5,8 +5,6 @@ import { db } from "../../config/firebase";
 import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
-import hasLike from "../../../assets/images/page-ideas/leaf.png"
-import doesntHaveLike from "../../../assets/images/page-ideas/leaf\ \(1\).png"
 
 const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
   // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
@@ -14,7 +12,7 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
 
   const [edit, setEdit] = useState(false);
   const [isInEdition, setIsInEdition] = useState(false);
-  const [isLiked, setIsLiked] = useState(false)
+  const [isLiked, setIsLiked] = useState(false);
   const { currentUser } = useAuth();
 
   const editBtn = () => {
@@ -58,31 +56,26 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes }) => {
     }
   };
 
-// LAJKI
-
-console.log("isLiked", isLiked)
-const docRef = doc(db, "ideas", id)
+  // LAJKI
 
   const getLike = async (id) => {
-
-
+    const docRef = doc(db, "ideas", id);
     setIsLiked(!isLiked);
 
-    if(!isLiked) { 
+    if (!isLiked) {
       try {
-        await updateDoc(docRef, {totalLikes: Number(totalLikes) + 1})
+        await updateDoc(docRef, { totalLikes: Number(totalLikes) + 1 });
+      } catch {
+        console.log("nie udało się");
       }
-      catch {
-        console.log("nie udało się")
-      }} else {
-        try {
-          await updateDoc(docRef, {totalLikes: Number(totalLikes) - 1})
-        }
-        catch {
-          console.log("nie udało się")
-        }
+    } else {
+      try {
+        await updateDoc(docRef, { totalLikes: Number(totalLikes) - 1 });
+      } catch {
+        console.log("nie udało się");
       }
     }
+  };
 
   return (
     <div className={styles.ideaCard}>
@@ -98,9 +91,13 @@ const docRef = doc(db, "ideas", id)
               !edit && (
                 <div>
                   <div>
-                    <button className={`${styles.iconBtn} ${isLiked ? styles.hasLike : styles.doesntHaveLike}`} onClick={() => getLike(id)} 
+                    <button
+                      className={`${styles.iconBtn} ${
+                        isLiked ? styles.hasLike : styles.doesntHaveLike
+                      }`}
+                      onClick={() => getLike(id)}
                     ></button>
-                    <span>{totalLikes}</span>
+                    <span>{totalLikes !== 0 ? totalLikes : null}</span>
                   </div>
                   <button className={styles.iconBtn} onClick={editBtn}></button>
                 </div>
@@ -109,10 +106,12 @@ const docRef = doc(db, "ideas", id)
               <div className={styles.othercomments}>
                 <button
                   disabled={!currentUser?.uid}
-                  className={`${styles.iconBtn} ${isLiked ? styles.hasLike : styles.doesntHaveLike}`}
+                  className={`${styles.iconBtn} ${
+                    isLiked ? styles.hasLike : styles.doesntHaveLike
+                  }`}
                   onClick={() => getLike(id)}
                 ></button>
-                <span>{totalLikes}</span>
+                <span>{totalLikes !== 0 ? totalLikes : null}</span>
               </div>
             )}
             {edit && (
