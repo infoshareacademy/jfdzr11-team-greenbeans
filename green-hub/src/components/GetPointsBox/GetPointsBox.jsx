@@ -54,14 +54,14 @@ const GetPointsBox = ({icon, title, description, scaler, scale, isButton = true}
       >
         <button className={styles.cancel} onClick={closeBox}>✖</button>
         <img src="../../../assets/images/page-main/heart.png" className={styles.background}/>
-        
         <h3>{title}</h3>
         <p>Please enter your score:</p>
         <form onSubmit={(e) => {updateUserPoints(e, currentUser.uid)}}>
           <div>
-          <span>{scale} * </span><input type="number" name='points' id='points' defaultValue={0} onChange={(e) => {setScore(e.target.value); console.log(e.target.value)}}/><span> = {score*scale}</span>
+          <span>{scale} * </span>
+          <input type="number" name='points' id='points' defaultValue={0} onChange={(e) => {setScore(e.target.value); console.log(e.target.value)}}/>
+          <span> = {score*scale}</span>
           </div>
-          
           <button>CONFIRM</button>
         </form>        
       </Modal>
