@@ -1,0 +1,170 @@
+.ideaCard {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  width: 30rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: hsla(0, 0%, 85%, 0.5);
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user span {
+  font-weight: 300;
+}
+
+.ideaCard .user + p {
+  margin: 0;
+  padding: 1rem 0;
+  overflow-wrap: break-word;
+  text-shadow: none;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.ideaCard button {
+  width: 4.5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  background-color: #8ea38a;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ideaCard button:hover {
+  cursor: pointer;
+  padding: 0;
+  font-weight: 800;
+  color: #8ea38a;
+  background-color: transparent;
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn button {
+  margin-left: 0.5rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ideaCard button.iconBtn:first-child {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../../assets/images/page-ideas/leaf\ \(1\).png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.ideaCard button.iconBtn.hasLike {
+  background-image: url("../../../assets/images/page-ideas/leaf.png");
+}
+
+.ideaCard button.iconBtn.doesntHaveLike {
+  background-image: url("../../../assets/images/page-ideas/leaf\ \(1\).png");
+}
+
+.ideaCard button.iconBtn:first-child:disabled {
+  opacity: 0.5;
+}
+
+.ideaCard button.iconBtn:first-child:disabled:hover {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.ideaCard button.iconBtn {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../../assets/images/page-ideas/comment\ \(1\).png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.ideaCard button.cancel {
+  background-color: transparent;
+  border: none;
+  color: #8ea38a;
+  font-size: 1.2rem;
+  padding: 0;
+  box-shadow: none;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: auto;
+}
+
+.ideaCard button.cancel:hover {
+  cursor: pointer;
+}
+
+textarea.edition {
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  background-color: transparent;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0 0 0;
+  margin-bottom: 1rem;
+  color: rgb(107, 107, 107);
+  resize: none;
+  min-height: auto;
+  overflow: hidden;
+  text-overflow: none;
+  line-height: 1.5rem;
+}
+
+div.user + textarea:focus {
+  outline: none;
+}
+
+div.btn div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+div.btn div div {
+  display: flex;
+  width: max-content;
+}
+
+div.btn div.othercomments {
+  display: flex;
+  justify-content: flex-start;
+}
+
+div.btn div div span,
+div.btn div.othercomments span {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+@media (max-width: 570px) {
+  .ideaCard {
+    width: 80%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
