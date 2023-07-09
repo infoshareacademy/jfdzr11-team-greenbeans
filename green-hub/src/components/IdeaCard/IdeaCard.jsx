@@ -25,10 +25,11 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 
   const textArea = useRef(null);
   useEffect(() => {
+    console.log(textArea.current)
     if (textArea.current) {
       textArea.current.style.height = textArea.current.scrollHeight + "px";
     }
-  }, [textArea.current]);
+  }, [isInEdition]);
 
   // USUWANIE POMYSŁU
   const handleDelete = (id) => {

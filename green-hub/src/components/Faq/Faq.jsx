@@ -11,6 +11,7 @@ const Faq = () => {
       </div>
 
       <div className={styles.question_container}>
+        <h1>FAQ</h1>
         <ol>
           <li>What does Green hub do?</li>
           <p>

@@ -10,6 +10,20 @@
 }
 
 .question_container {
-  padding: 1rem 0.5rem;
   padding-right: 1rem;
+  max-width: 43rem;
+  margin: 0 auto;
+}
+
+.faq_container h1 {
+  text-align: center;
+  text-shadow: 10px 10px 10px #8ea389;
+  letter-spacing: 2rem;
+  font-size: 3rem;
+  letter-spacing: 50%;
+  margin: 4rem 0 2.5rem 0;
+}
+
+.faq_container ol {
+  padding: 0 2rem 0 4rem;
 }

@@ -125,12 +125,14 @@ textarea.edition {
   background-color: transparent;
   width: 100%;
   margin: 0;
-  padding: 1rem 0;
+  padding: 1rem 0 0 0;
+  margin-bottom: 1rem;
   color: rgb(107, 107, 107);
   resize: none;
   min-height: auto;
   overflow: hidden;
   text-overflow: none;
+  line-height: 1.5rem;
 }
 
 div.user + textarea:focus {
@@ -157,4 +159,12 @@ div.btn div div span,
 div.btn div.othercomments span {
   text-align: center;
   padding: 0.5rem;
+}
+
+@media (max-width: 570px) {
+  .ideaCard {
+    width: 80%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 }
