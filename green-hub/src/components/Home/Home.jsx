@@ -17,6 +17,7 @@ import { getBackgroundImage } from "../Background/getBackgroundImage";
 const Home = () => {
   const { logout, currentUser } = useAuth();
   const [user, setUser] = useState("");
+  const [admin, setAdmin] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -31,6 +32,8 @@ const Home = () => {
     try {
       const userData = await getDoc(doc(db, "users", currentUser?.uid));
       const userName = `${userData.data().name}`;
+      const userAdmin = userData.data().isAdmin;
+      setAdmin(userAdmin);
       setUser(userName);
     } catch (error) {
       console.log("no user here");
@@ -111,6 +114,7 @@ const Home = () => {
             <img className={styles.icon} src={trophy}></img>
           </button>
         </Link>
+        {admin ? <button className={styles.btns}>Messages</button> : null}
       </div>
       <Background />
       <Footer />
