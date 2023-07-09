@@ -111,7 +111,7 @@ const Ideas = () => {
           planet in this way, we will consider adding this activity in the
           Points section.
         </p>
-        <div>
+        <div className={styles.paraWithImg}>
         <div className={styles.imagesPack}>
           <img src="../../../assets/images/page-ideas/tree-12.png" alt="" />
           <img src="../../../assets/images/page-ideas/tree-11.png" alt="" />

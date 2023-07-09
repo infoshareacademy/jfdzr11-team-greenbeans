@@ -229,6 +229,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 520px) {
     .getpointsBox {
+        min-width: 93%;
         grid-template-columns: 2fr 1fr;
         grid-template-areas: 
         "para img"
