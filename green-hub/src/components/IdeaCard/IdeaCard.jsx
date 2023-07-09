@@ -38,7 +38,6 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
   };
 
   // EDYCJA POMYSŁU
-
   const handleEdit = () => {
     setIsInEdition(true);
   };
@@ -65,6 +64,7 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
   // LAJKI
 
   const getLike = async (id) => {
+
     const docRef = doc(db, "ideas", id);
     console.log(docRef)
     setIsLiked(!isLiked);
