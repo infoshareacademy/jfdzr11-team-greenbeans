@@ -114,7 +114,9 @@ const Home = () => {
             <img className={styles.icon} src={trophy}></img>
           </button>
         </Link>
-        {admin ? <button className={styles.btns}>Messages</button> : null}
+        <Link to="/messages">
+          {admin ? <button className={styles.btns}>Messages</button> : null}
+        </Link>
       </div>
       <Background />
       <Footer />

@@ -12,6 +12,7 @@ import AboutUs from "./AboutUs/AboutUs";
 import ContactUs from "./ContactUs/ContactUs";
 import Terms from "./Terms/Terms";
 import Faq from "./Faq/Faq";
+import Messages from "./Messages/Messages";
 
 export {
   Prizes,
@@ -27,5 +28,6 @@ export {
   Login,
   Register,
   Home,
-  ForgotPassword
+  ForgotPassword,
+  Messages,
 };
