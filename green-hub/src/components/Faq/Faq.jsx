@@ -8,7 +8,6 @@ const Faq = () => {
 			<div className={styles.navbar_container}>
 				<Navbar />
 			</div>
-
 			<div className={styles.question_container}>
 				<h1>FAQ</h1>
 				<ol>

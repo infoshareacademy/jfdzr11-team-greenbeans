@@ -4,7 +4,6 @@ import { db } from "../../config/firebase.js";
 import {
 	Timestamp,
 	addDoc,
-	// getDocs,
 	collection,
 	orderBy,
 	onSnapshot,
@@ -21,28 +20,9 @@ const Ideas = () => {
 	const [idea, setIdea] = useState([]);
 	const [user, setUser] = useState("");
 	const ideasCollectionRef = collection(db, "ideas");
-	// const usersCollectionRef = collection(db, "users")
 	const { currentUser } = useAuth();
 
 	// POBIERANIE USERÓW
-	// const getUser = async () => {
-	//   try {
-	//     const data = await getDocs(usersCollectionRef);
-	//     const filteredData = data.docs.map((doc) => ({
-	//       ...doc.data()
-	//     }))
-	//     console.log('fileteredData: ', filteredData)
-	//     const userData = filteredData?.filter(el => el.email === currentUser.email)
-	//     console.log('user: ', userData, 'currentUser: ', currentUser)
-	//     const userName = `${userData[0].name} ${userData[0].lastName}`
-	//     console.log("user - czy jesteś tu: ", userName)
-	//     setUser(userName);
-	//   } catch (error) {
-	//     console.log("no user here", currentUser);
-	//     console.error(error)
-	//   }
-	// }
-
 	const getUserName = async () => {
 		try {
 			const userData = await getDoc(doc(db, "users", currentUser?.uid));
