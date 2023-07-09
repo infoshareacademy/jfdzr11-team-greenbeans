@@ -5,18 +5,40 @@ import copywriting from "../../../assets/images/page-main/copywriting.png";
 import heart from "../../../assets/images/page-main/heart.png";
 import idea from "../../../assets/images/page-main/idea.png";
 import trophy from "../../../assets/images/page-main/trophy.png";
-import { getDoc, doc } from "@firebase/firestore";
+import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";
+import Background from "../Background/Background";
 import Footer from "../Footer/Footer";
 import DisplayPoints from "../DisplayPoints/DisplayPoints";
+import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
 import { toast } from "react-hot-toast";
-import Background from "../Background/Background";
-import { getBackgroundImage } from "../Background/getBackgroundImage";
 
 const Home = () => {
   const { logout, currentUser } = useAuth();
   const [user, setUser] = useState("");
+  const usersCollectionRef = collection(db, "users");
+
+  const getUser = async () => {
+    try {
+      const data = await getDocs(usersCollectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+      }));
+      const user = filteredData.filter(
+        (user) => user.email === currentUser.email
+      );
+      const userName = `${user[0].name}`;
+      console.log(userName)
+      setUser(userName);
+    } catch {
+      console.log("no user here");
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, [currentUser]);
 
   const handleLogout = async () => {
     try {
@@ -27,22 +49,17 @@ const Home = () => {
     }
   };
 
-  const getUserName = async () => {
-    try {
-      const userData = await getDoc(doc(db, "users", currentUser?.uid));
-      const userName = `${userData.data().name}`;
-      setUser(userName);
-    } catch (error) {
-      console.log("no user here");
-      console.error(error);
+  const { userPoints } = UseUserPoints();
+
+  const getBackgroundImage = () => {
+    if (userPoints >= 1300) {
+      return styles.good;
+    } else if (userPoints >= 800 && userPoints < 1300) {
+      return styles.semi;
+    } else {
+      return styles.bad;
     }
   };
-
-  useEffect(() => {
-    if (currentUser) {
-      setUser(getUserName());
-    }
-  }, [currentUser]);
 
   return (
     <div className={`${styles.home_container} ${getBackgroundImage()}`}>
