@@ -40,6 +40,7 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 	};
 
 	// EDYCJA POMYSŁU
+
 	const handleEdit = () => {
 		setIsInEdition(true);
 	};

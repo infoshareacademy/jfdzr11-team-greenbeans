@@ -1,15 +1,3 @@
-.bad {
-	background-image: url("../../../assets/images/backgrounds/bad.svg");
-  }
-  
-  .semi {
-	background-image: url("../../../assets/images/backgrounds/semi.svg");
-  }
-  
-  .good {
-	background-image: url("../../../assets/images/backgrounds/good.svg");
-  }
-
 .container {
 	display: grid;
 	justify-items: center;

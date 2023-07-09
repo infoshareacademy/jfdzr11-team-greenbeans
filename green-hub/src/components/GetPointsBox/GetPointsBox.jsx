@@ -77,6 +77,7 @@ const GetPointsBox = ({
 					src="../../../assets/images/page-main/heart.png"
 					className={styles.background}
 				/>
+
 				<h3>{title}</h3>
 				<p>Please enter your score:</p>
 				<form
@@ -98,9 +99,12 @@ const GetPointsBox = ({
 						/>
 						<span> = {score * scale}</span>
 					</div>
+
 					<button>CONFIRM</button>
 				</form>
 			</Modal>
 		</div>
 	);
 };
+
+export default GetPointsBox;
