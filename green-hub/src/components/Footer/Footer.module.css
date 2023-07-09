@@ -1,20 +1,24 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  margin-top: 2rem;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 2rem;
+	margin-top: 2rem;
 }
 
 .footer ul {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
 }
 
 .footer li {
-  list-style: none;
+	list-style: none;
 }
 
 .footer a {
-  color: black;
+	color: black;
+}
+
+.footer li:hover {
+	font-weight: bolder;
 }
