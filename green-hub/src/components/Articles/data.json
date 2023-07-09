@@ -1,6 +1,6 @@
 [
     {
-    "id": "1",
+    "firebaseId": "1",
     "author": "United Nations",
     "header": "What is climate change?",
     "text": "Many people think climate change mainly means warmer temperatures. But temperature rise is only the beginning of the story.",
@@ -11,7 +11,7 @@
 
 
 {
-    "id": "2",
+    "firebaseId": "2",
     "author": "Acciona Wind",
     "header": "Wind energy",
     "text": "Wind power is the most efficient technology to produce energy in a safe and environmentally sustainable manner:  it is zero emissions, local, inexhaustible, competitive and it creates wealth and jobs.",
@@ -21,7 +21,7 @@
 
 
 {
-    "id": "3",
+    "firebaseId": "3",
     "author": "WWF",
     "header": "Most endangered animals",
     "text": "Currently, more than 41,000 species have been assessed to be under threat of extinction according to the IUCN.",

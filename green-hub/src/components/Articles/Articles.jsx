@@ -6,23 +6,52 @@ import pinkHeart from "../../../assets/images/page-articles/pinkheart.png";
 import Navbar from "../Navbar/Navbar";
 import useAuth from "../../context/AuthContext";
 import Footer from "../Footer/Footer";
+import { db } from "../../config/firebase.js";
+import { updateDoc, doc } from "firebase/firestore";
 
 const Articles = () => {
   const [articleData, setArticleData] = useState(null);
-  const [clickedHearts, setClickedHearts] = useState([]);
+  
   const { currentUser } = useAuth();
+
+  const [isLiked, setIsLiked] = useState(false);
+  const [usersLikes, setUsersLikes] = useState([]);
+
 
   useEffect(() => {
     setArticleData(jsonData);
   }, []);
 
-  const handleHeartClick = (articleId) => {
-    if (clickedHearts.includes(articleId)) {
-      setClickedHearts(clickedHearts.filter((id) => id !== articleId));
-    } else {
-      setClickedHearts([...clickedHearts, articleId]);
+   useEffect(() => {
+    if (currentUser?.uid) {
+      setUsersLikes(usersLikes);
+      setIsLiked(usersLikes.includes(currentUser.uid));
     }
-  };
+  }, [currentUser?.uid, usersLikes]);
+
+ 
+
+  const handleHeartClick = async (id) => {
+    const docRef = doc(db, "articles", id);
+    console.log(docRef)
+    
+
+
+    if (!isLiked) {
+      try {
+        await updateDoc(docRef, { usersLikes: [...usersLikes, currentUser.uid] });
+        setIsLiked(true);
+        setUsersLikes([...usersLikes, currentUser.uid]);
+        console.log(usersLikes, currentUser.uid);
+
+      } catch (error) {
+        console.log("nie udało się polubić artykułu", error);
+      }
+      } 
+    }
+  
+    
+
 
   return (
     <>
@@ -32,7 +61,7 @@ const Articles = () => {
         <p className={styles.subtitle}>be aware and get some points</p>
         {articleData &&
           articleData.map((article) => (
-            <div className={styles.articleContainer} key={article.id}>
+            <div className={styles.articleContainer} key={article.firebaseId}>
               <h1 className={styles.articleHeader}>{article.header}</h1>
               <p className={styles.articleAuthor}>{article.author}</p>
               <p className={styles.articleText}>{article.text}</p>
@@ -43,11 +72,15 @@ const Articles = () => {
                 {currentUser?.uid ? (
                   <img
                     className={`${styles.heart} ${
-                      clickedHearts.includes(article.id) ? styles.pinkHeart : ""
+                      isLiked ? styles.pinkHeart
+                        : ""
                     }`}
-                    src={clickedHearts.includes(article.id) ? pinkHeart : heart}
+                    src={isLiked
+                        ? pinkHeart
+                        : heart
+                    }
                     alt="serce"
-                    onClick={() => handleHeartClick(article.id)}
+                    onClick={() => handleHeartClick(article.firebaseId)}
                   />
                 ) : null}
                 <div
@@ -62,5 +95,6 @@ const Articles = () => {
     </>
   );
 };
+
 
 export default Articles;
