@@ -92,7 +92,7 @@
   text-align: center;
 }
 
-.ideas p + div {
+.ideas .paraWithImg {
   display: flex;
 }
 
@@ -101,7 +101,7 @@
       letter-spacing: 1rem;
   }
 
-  .ideas p + div {
+  .ideas .paraWithImg {
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;

@@ -7,8 +7,8 @@ import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 
 const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
-	// stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
-	// stan isInEdition - określa komponent aktualnie jest wyświetlany czy podlega edycji
+  // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
+  // stan isInEdition - określa czy komponent jest aktualnie w edycji
 
 	const [edit, setEdit] = useState(false);
 	const [isInEdition, setIsInEdition] = useState(false);
@@ -33,11 +33,17 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 		}
 	}, [isInEdition]);
 
-	// USUWANIE POMYSŁU
-	const handleDelete = (id) => {
-		const docRef = doc(db, "ideas", id);
-		deleteDoc(docRef);
-	};
+  // USUWANIE POMYSŁU
+  const handleDelete = (id) => {
+    try {
+      const docRef = doc(db, "ideas", id);
+      deleteDoc(docRef);
+      toast.success("Idea deleted")
+    } catch {
+      toast.error("Something went wrong! Please try again!");
+    }
+    
+  };
 
 	// EDYCJA POMYSŁU
 
@@ -55,14 +61,13 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 		console.log(e.target.ideaToEdit.value);
 		const docRef = doc(db, "ideas", id);
 
-		try {
-			await updateDoc(docRef, { idea: e.target.ideaToEdit.value });
-			console.log(auth);
-			toast.success("Changes saved");
-		} catch {
-			toast.error("Something went wrong");
-		}
-	};
+    try {
+      await updateDoc(docRef, { idea: e.target.ideaToEdit.value });
+      toast.success("Changes saved");
+    } catch {
+      toast.error("Something went wrong");
+    }
+  };
 
 	// LAJKI
 
