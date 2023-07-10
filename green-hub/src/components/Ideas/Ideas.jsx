@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar, Footer } from "../index";
 import { db } from "../../config/firebase.js";
 import {
-  Timestamp,
-  addDoc,
-  collection,
-  orderBy,
-  onSnapshot,
-  query,
-  getDoc,
-  doc
+	Timestamp,
+	addDoc,
+	collection,
+	orderBy,
+	onSnapshot,
+	query,
+	getDoc,
+	doc,
 } from "firebase/firestore";
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
@@ -17,79 +17,79 @@ import styles from "./Ideas.module.css";
 import useAuth from "../../context/AuthContext";
 
 const Ideas = () => {
-  
-  const [idea, setIdea] = useState([]);
-  const [user, setUser] = useState('')
-  const ideasCollectionRef = collection(db, "ideas");
-  const { currentUser } = useAuth();
 
-  // POBIERANIE USERÓW
-  const getUserName = async () => {
-    try {
-      const userData = await getDoc(doc(db, "users", currentUser?.uid))
-      const userName = `${userData.data().name} ${userData.data().lastName}`
-      setUser(userName)
-    } catch (error) {
-      console.log("no user here");
-      console.error(error)
-    }
-  }
+	const [idea, setIdea] = useState([]);
+	const [user, setUser] = useState("");
+	const ideasCollectionRef = collection(db, "ideas");
+	const { currentUser } = useAuth();
 
-  useEffect(() => {
-    if(currentUser) {getUserName()};
-   }, [currentUser])
+	// POBIERANIE USERÓW
+		const getUserName = async () => {
+		try {
+			const userData = await getDoc(doc(db, "users", currentUser?.uid));
+			const userName = `${userData.data().name} ${userData.data().lastName}`;
+			setUser(userName);
+		} catch (error) {
+			console.log("no user here");
+			console.error(error);
+		}
+	};
 
-  // WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
-  const q = query(ideasCollectionRef, orderBy("date", "desc"));
+	useEffect(() => {
+		if (currentUser) {
+			getUserName();
+		}
+	}, [currentUser]);
 
-  const getIdeasFromSnapshot = (querySnapshot) => {
-    return querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-  };
+	// WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
+	const q = query(ideasCollectionRef, orderBy("date", "desc"));
 
-  const dbListener = (cb) => onSnapshot(q, cb);
+	const getIdeasFromSnapshot = (querySnapshot) => {
+		return querySnapshot.docs.map((doc) => ({
+			id: doc.id,
+			...doc.data(),
+		}));
+	};
 
-  useEffect(() => {
-    dbListener((querySnapshot) => setIdea(getIdeasFromSnapshot(querySnapshot)));
-  }, []);
+	const dbListener = (cb) => onSnapshot(q, cb);
 
-  // funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
-  const getNewIdea = (e) => {
-    const newIdea = {
-      user: user,
-      idea: e.target.idea.value,
-      date: Timestamp.fromDate(new Date()),
-      auth: currentUser.uid,
-      totalLikes: 0,
-      usersLikes: []
-    };
-    e.target.reset();
-    console.log('to czego szukam: ', user)
-    return newIdea;
-  };
+	useEffect(() => {
+		dbListener((querySnapshot) => setIdea(getIdeasFromSnapshot(querySnapshot)));
+	}, []);
 
-  // DODAWANIE NOWEGO POMYSŁU
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const idea = getNewIdea(e);
-    console.log(idea.idea, currentUser);
+	// funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
+	const getNewIdea = (e) => {
+		const newIdea = {
+			user: user,
+			idea: e.target.idea.value,
+			date: Timestamp.fromDate(new Date()),
+			auth: currentUser.uid,
+			totalLikes: 0,
+			usersLikes: [],
+		};
+		e.target.reset();
+		return newIdea;
+	};
 
-    if (!idea.idea) {
-      toast.error(
-        "I can't read in your mind 🥺 please write down your idea in field below 😃"
-      );
-    } else {
-      try {
-        await addDoc(ideasCollectionRef, idea);
-        toast.success("New idea added! 💡");
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong! Please try again!");
-      }
-    }
-  };
+	// DODAWANIE NOWEGO POMYSŁU
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const idea = getNewIdea(e);
+
+		if (!idea.idea) {
+			toast.error(
+				"I can't read in your mind 🥺 please write down your idea in field below 😃"
+			);
+		} else {
+			try {
+				await addDoc(ideasCollectionRef, idea);
+				toast.success("New idea added! 💡");
+			} catch (error) {
+				console.log(error);
+				toast.error("Something went wrong! Please try again!");
+			}
+		}
+	};
 
   return (
     <div className={styles.ideas}>
