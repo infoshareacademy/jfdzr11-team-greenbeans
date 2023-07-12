@@ -14,10 +14,15 @@ import {
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Prizes from "./components/Prizes/Prizes";
+import {HeartsContext} from "./context/HeartsContext";
+import { useState} from 'react';
 
 function App() {
+    const [clickedHearts, setClickedHearts] = useState([]);
+    const hearts = {clickedHearts, setClickedHearts};
   return (
     <>
+    <HeartsContext.Provider value={hearts}>
       <Toaster />
 
       <Routes>
@@ -35,6 +40,7 @@ function App() {
         <Route path="/terms" element={<Terms />}></Route>
         <Route path="/contactus" element={<ContactUs />}></Route>
       </Routes>
+      </HeartsContext.Provider>
     </>
   );
 }
