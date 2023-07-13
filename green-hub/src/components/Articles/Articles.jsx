@@ -13,22 +13,13 @@ import {HeartsContext} from "../../context/HeartsContext";
 const Articles = () => {
   const [articleData, setArticleData] = useState(null);
   
-  const [data_fetched, setDataFetched] = useState(false);
   const {clickedHearts, setClickedHearts} = useContext(HeartsContext);
   const { currentUser } = useAuth();
 
   useEffect(() => {
     setArticleData(jsonData);
   }, []);
-  useEffect(() => {
-   if (currentUser?.uid){
-	const q = query(collection(db, "users_hearts"), where("uid", "==", currentUser.uid));
-	getDocs(q).then(({docs}) => {
-	    setDataFetched(true);
-	    setClickedHearts(docs.map(single_row => single_row.data().aid));
-	});
-      }
-  },[currentUser]);
+ 
   
   const handleHeartClick = async (articleId) => {
       
