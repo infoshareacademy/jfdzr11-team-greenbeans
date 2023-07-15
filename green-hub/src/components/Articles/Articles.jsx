@@ -33,9 +33,6 @@ const Articles = () => {
 	aid: articleId
       });
       setClickedHearts([...clickedHearts, articleId]);
-  } else {
-      deleteDoc(docRef);
-      setClickedHearts(clickedHearts.filter((id) => id !== articleId));
   }
   };
 
