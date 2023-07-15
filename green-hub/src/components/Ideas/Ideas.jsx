@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navbar, Footer } from "../index";
 import { db } from "../../config/firebase.js";
 import {
@@ -15,9 +15,11 @@ import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./Ideas.module.css";
 import useAuth from "../../context/AuthContext";
+import {TransitionGroup, CSSTransition} from "react-transition-group"
 
 const Ideas = () => {
 
+	const nodeRef = useRef(null)
 	const [idea, setIdea] = useState([]);
 	const [user, setUser] = useState("");
 	const ideasCollectionRef = collection(db, "ideas");
@@ -136,11 +138,14 @@ const Ideas = () => {
         </form> 
         : null
         } 
+		
         {idea
-          ? idea.map((idea) => {
+          ? <ul><TransitionGroup>{idea.map((idea) => {
               const date = idea?.date?.toDate().toDateString();
               return (
-                <IdeaCard
+				<CSSTransition timeout={500} classNames={styles.item} nodeRef={nodeRef}>
+					<li ref={nodeRef}>
+					<IdeaCard
                   key={idea.id}
                   id={idea.id}
                   user={idea.user}
@@ -150,9 +155,14 @@ const Ideas = () => {
                   totalLikes={idea.totalLikes}
                   usersLikes={idea.usersLikes}
                 />
+					</li>
+                
+				</CSSTransition>
+				
               );
-            })
+            })}</TransitionGroup></ul>
           : null}
+		
       </main>
       <Footer />
     </div>
