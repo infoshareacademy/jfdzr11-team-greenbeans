@@ -17,6 +17,7 @@ import { toast } from "react-hot-toast";
 const Home = () => {
   const { logout, currentUser } = useAuth();
   const [user, setUser] = useState("");
+  const [admin, setAdmin] = useState(false);
   const usersCollectionRef = collection(db, "users");
 
   const getUser = async () => {
@@ -29,6 +30,11 @@ const Home = () => {
         (user) => user.email === currentUser.email
       );
       const userName = `${user[0].name}`;
+
+      const isAdmin = filteredData.filter(
+        (user) => user.isAdmin === currentUser.isAdmin
+      );
+      setAdmin(isAdmin);
       console.log(userName);
       setUser(userName);
     } catch {
@@ -128,9 +134,11 @@ const Home = () => {
             <img className={styles.icon} src={trophy}></img>
           </button>
         </Link>
-        <Link to="/messages">
-          <button className={styles.btns}>Messages</button>
-        </Link>
+        {admin ? (
+          <Link to="/messages">
+            <button className={styles.btns}>Messages</button>
+          </Link>
+        ) : null}
       </div>
       <Background />
       <Footer />
