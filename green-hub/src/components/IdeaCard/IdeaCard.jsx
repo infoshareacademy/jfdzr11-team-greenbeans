@@ -7,10 +7,10 @@ import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 
 const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
-  // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
+  // stan isAvailableToEdit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
   // stan isInEdition - określa czy komponent jest aktualnie w edycji
 
-	const [edit, setEdit] = useState(false);
+	const [isAvailableToEdit, setIsAvailableToEdit] = useState(false);
 	const [isInEdition, setIsInEdition] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 	const { currentUser } = useAuth();
@@ -22,12 +22,11 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 	}, []);
 
 	const editBtn = () => {
-		setEdit(true);
+		setIsAvailableToEdit(true);
 	};
 
 	const textArea = useRef(null);
 	useEffect(() => {
-		console.log(textArea.current);
 		if (textArea.current) {
 			textArea.current.style.height = textArea.current.scrollHeight + "px";
 		}
@@ -52,12 +51,12 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 	};
 	const handleCancel = () => {
 		setIsInEdition(false);
-		setEdit(false);
+		setIsAvailableToEdit(false);
 	};
 	const handleUpdate = async (e, id) => {
 		e.preventDefault();
 		setIsInEdition(false);
-		setEdit(false);
+		setIsAvailableToEdit(false);
 		console.log(e.target.ideaToEdit.value);
 		const docRef = doc(db, "ideas", id);
 
@@ -112,7 +111,7 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 					<p>{idea}</p>
 					<div className={styles.btn}>
 						{currentUser?.uid === auth ? (
-							!edit && (
+							!isAvailableToEdit && (
 								<div>
 									<div>
 										<button
@@ -141,7 +140,7 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 								<span>{totalLikes !== 0 ? totalLikes : null}</span>
 							</div>
 						)}
-						{edit && (
+						{isAvailableToEdit && (
 							<>
 								<button onClick={handleEdit}>EDIT</button>
 								<button
@@ -176,9 +175,9 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 					defaultValue={idea}
 				></textarea>
 				<div className={styles.btn}>
-					<button>CHECK</button>
+					<button type="submit">CHECK</button>
 					<button
-						type="button"
+						type="reset"
 						onClick={handleCancel}
 					>
 						CANCEL
