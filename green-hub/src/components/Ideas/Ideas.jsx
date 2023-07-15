@@ -14,6 +14,7 @@ import {
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./Ideas.module.css";
+import "./Ideas.css";
 import useAuth from "../../context/AuthContext";
 import {TransitionGroup, CSSTransition} from "react-transition-group"
 import "./Ideas.css"
@@ -26,7 +27,7 @@ const Ideas = () => {
 	const { currentUser } = useAuth();
 
 	// POBIERANIE USERÓW
-		const getUserName = async () => {
+	const getUserName = async () => {
 		try {
 			const userData = await getDoc(doc(db, "users", currentUser?.uid));
 			const userName = `${userData.data().name} ${userData.data().lastName}`;
@@ -57,7 +58,9 @@ const Ideas = () => {
 	const dbListener = (cb) => onSnapshot(q, cb);
 
 	useEffect(() => {
-		dbListener((querySnapshot) => setIdea(getIdeasFromSnapshot(querySnapshot)));
+		dbListener((querySnapshot) =>
+			setIdea(getIdeasFromSnapshot(querySnapshot))
+		);
 	}, []);
 
 	// funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
@@ -94,6 +97,8 @@ const Ideas = () => {
 			}
 		}
 	};
+
+	console.log("idea ", idea);
 
   return (
     <div className={styles.ideas}>
