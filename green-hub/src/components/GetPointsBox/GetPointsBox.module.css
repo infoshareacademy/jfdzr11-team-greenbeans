@@ -262,3 +262,20 @@ input::-webkit-inner-spin-button {
     }
 
 }
+
+@media (max-width: 400px) {
+    .info {
+        right: calc(50% - 40vw);
+        width: 80vw;
+    }
+
+    .info h3 {
+        width: 80%
+    }
+
+    .info div {
+        justify-content: flex-end;
+        margin: 0;
+        height: 5.5rem;
+      }
+}

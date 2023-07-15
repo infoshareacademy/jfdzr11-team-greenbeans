@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, createRef } from "react";
 import { Navbar, Footer } from "../index";
 import { db } from "../../config/firebase.js";
 import {
@@ -16,10 +16,10 @@ import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./Ideas.module.css";
 import useAuth from "../../context/AuthContext";
 import {TransitionGroup, CSSTransition} from "react-transition-group"
+import "./Ideas.css"
 
 const Ideas = () => {
 
-	const nodeRef = useRef(null)
 	const [idea, setIdea] = useState([]);
 	const [user, setUser] = useState("");
 	const ideasCollectionRef = collection(db, "ideas");
@@ -49,6 +49,7 @@ const Ideas = () => {
 	const getIdeasFromSnapshot = (querySnapshot) => {
 		return querySnapshot.docs.map((doc) => ({
 			id: doc.id,
+			nodeRef: createRef(null),
 			...doc.data(),
 		}));
 	};
@@ -68,6 +69,7 @@ const Ideas = () => {
 			auth: currentUser.uid,
 			totalLikes: 0,
 			usersLikes: [],
+			nodeRef: createRef(null)
 		};
 		e.target.reset();
 		return newIdea;
@@ -143,8 +145,8 @@ const Ideas = () => {
           ? <ul><TransitionGroup>{idea.map((idea) => {
               const date = idea?.date?.toDate().toDateString();
               return (
-				<CSSTransition timeout={500} classNames={styles.item} nodeRef={nodeRef}>
-					<li ref={nodeRef}>
+				<CSSTransition key={idea.id} timeout={500} classNames="item" nodeRef={idea.nodeRef}>
+					<li ref={idea.nodeRef}>
 					<IdeaCard
                   key={idea.id}
                   id={idea.id}

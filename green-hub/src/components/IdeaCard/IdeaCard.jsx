@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
 
 const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
-  // stan edit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
+  // stan isAvailableToEdit - określa czy komponent ma możliwość edycji, tzn. czy dany komponent został stworzony przez aktulanie zalogowanego użytkownika
   // stan isInEdition - określa czy komponent jest aktualnie w edycji
 
 	const [isAvailableToEdit, setIsAvailableToEdit] = useState(false);
@@ -27,7 +27,6 @@ const IdeaCard = ({ id, user, idea, date, auth, totalLikes, usersLikes }) => {
 
 	const textArea = useRef(null);
 	useEffect(() => {
-		console.log(textArea.current);
 		if (textArea.current) {
 			textArea.current.style.height = textArea.current.scrollHeight + "px";
 		}

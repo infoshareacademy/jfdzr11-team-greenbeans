@@ -96,6 +96,15 @@
   display: flex;
 }
 
+.ideas ul, .ideas li {
+  margin: 0;
+  padding: 0;
+}
+
+.ideas li {
+  list-style: none;
+}
+
 @media (max-width: 420px) {
   .ideas h1 {
       letter-spacing: 1rem;
@@ -130,19 +139,4 @@
     margin: 4rem 0;
   }
 
-}
-
-.item-enter {
-  opacity: 0;
-}
-.item-enter-active {
-  opacity: 1;
-  transition: opacity 5000ms ease-in;
-}
-.item-exit {
-  opacity: 1;
-}
-.item-exit-active {
-  opacity: 0;
-  transition: opacity 5000ms ease-in;
 }
