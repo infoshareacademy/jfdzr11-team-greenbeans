@@ -29,7 +29,7 @@ const Home = () => {
         (user) => user.email === currentUser.email
       );
       const userName = `${user[0].name}`;
-      console.log(userName)
+      console.log(userName);
       setUser(userName);
     } catch {
       console.log("no user here");
@@ -127,6 +127,9 @@ const Home = () => {
             Prizes
             <img className={styles.icon} src={trophy}></img>
           </button>
+        </Link>
+        <Link to="/messages">
+          <button className={styles.btns}>Messages</button>
         </Link>
       </div>
       <Background />
