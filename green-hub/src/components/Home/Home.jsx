@@ -1,10 +1,10 @@
 import styles from "../Home/Home.module.css";
 import { Link } from "react-router-dom";
 import useAuth from "../../context/AuthContext";
-import copywriting from "../../../assets/images/page-main/copywriting.png";
-import heart from "../../../assets/images/page-main/heart.png";
-import idea from "../../../assets/images/page-main/idea.png";
-import trophy from "../../../assets/images/page-main/trophy.png";
+import copywriting from "/assets/images/page-main/copywriting.png";
+import heart from "/assets/images/page-main/heart.png";
+import idea from "/assets/images/page-main/idea.png";
+import trophy from "/assets/images/page-main/trophy.png";
 import { getDocs, collection } from "@firebase/firestore";
 import { db } from "../../config/firebase";
 import { useState, useEffect } from "react";

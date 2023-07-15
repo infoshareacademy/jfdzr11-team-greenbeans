@@ -83,7 +83,7 @@ const Register = () => {
           <div className={styles.auth_container}>
             <h1>
               Hi! I'm plant{" "}
-              <img src="../../../assets/images/page-main/plant-11.png" />,
+              <img src="/jfdzr11-team-greenbeans/assets/images/page-main/plant-11.png" />,
               <br></br>
               let introduce yourself!
             </h1>

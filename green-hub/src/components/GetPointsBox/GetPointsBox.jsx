@@ -48,7 +48,7 @@ const GetPointsBox = ({
 				<p>{scaler}</p>
 				<span>need more info? click here</span>
 				<button>
-					<img src="../../../assets/images/page-points/about-us.png" />
+					<img src="/jfdzr11-team-greenbeans/assets/images/page-points/about-us.png" />
 				</button>
 			</div>
 			{isButton && (
@@ -74,7 +74,7 @@ const GetPointsBox = ({
 					✖
 				</button>
 				<img
-					src="../../../assets/images/page-main/heart.png"
+					src="/jfdzr11-team-greenbeans/assets/images/page-main/heart.png"
 					className={styles.background}
 				/>
 

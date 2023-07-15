@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./Articles.module.css";
 import jsonData from "../../components/Articles/data.json";
-import heart from "../../../assets/images/page-articles/heart.png";
-import pinkHeart from "../../../assets/images/page-articles/pinkheart.png";
+import heart from "/assets/images/page-articles/heart.png";
+import pinkHeart from "/assets/images/page-articles/pinkheart.png";
 import Navbar from "../Navbar/Navbar";
 import useAuth from "../../context/AuthContext";
 import Footer from "../Footer/Footer";

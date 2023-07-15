@@ -63,7 +63,7 @@
 .ideaCard button.iconBtn:first-child {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../assets/images/page-ideas/leaf\ \(1\).png");
+  background-image: url("/assets/images/page-ideas/leaf-1.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -74,11 +74,11 @@
 }
 
 .ideaCard button.iconBtn.hasLike {
-  background-image: url("../../../assets/images/page-ideas/leaf.png");
+  background-image: url("/assets/images/page-ideas/leaf.png");
 }
 
 .ideaCard button.iconBtn.doesntHaveLike {
-  background-image: url("../../../assets/images/page-ideas/leaf\ \(1\).png");
+  background-image: url("/assets/images/page-ideas/leaf-1.png");
 }
 
 .ideaCard button.iconBtn:first-child:disabled {
@@ -93,7 +93,7 @@
 .ideaCard button.iconBtn {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../assets/images/page-ideas/comment\ \(1\).png");
+  background-image: url("/assets/images/page-ideas/comment-1.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;

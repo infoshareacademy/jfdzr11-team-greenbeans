@@ -9,15 +9,15 @@
 }
 
 .bad {
-	background-image: url("../../../assets/images/backgrounds/bad.svg");
+	background-image: url("/assets/images/backgrounds/bad.svg");
 }
 
 .semi {
-	background-image: url("../../../assets/images/backgrounds/semi.svg");
+	background-image: url("/assets/images/backgrounds/semi.svg");
 }
 
 .good {
-	background-image: url("../../../assets/images/backgrounds/good.svg");
+	background-image: url("/assets/images/backgrounds/good.svg");
 }
 
 .text_holder {
@@ -87,7 +87,7 @@
 }
 
 div.cloud1 {
-	background-image: url("../../../assets/images/page-main/cloud.png");
+	background-image: url("/assets/images/page-main/cloud.png");
 	background-size: cover;
 	background-position: center;
 	filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
@@ -101,7 +101,7 @@ div.cloud1 {
 }
 
 div.cloud2 {
-	background-image: url("../../../assets/images/page-main/cloud.png");
+	background-image: url("/assets/images/page-main/cloud.png");
 	background-size: cover;
 	background-position: center;
 	filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
