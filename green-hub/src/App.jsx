@@ -24,7 +24,8 @@ import { doc, collection,setDoc,deleteDoc ,getDoc,query,getDocs,where} from "fir
 function App() {
       const { currentUser } = useAuth();
     const [clickedHearts, setClickedHearts] = useState([]);
-    const hearts = {clickedHearts, setClickedHearts};
+    const [additionalPoints, setAdditionalPoints] = useState(0);
+    const hearts = {clickedHearts, setClickedHearts,additionalPoints, setAdditionalPoints};
      useEffect(() => {
    if (currentUser?.uid){
 	const q = query(collection(db, "users_hearts"), where("uid", "==", currentUser.uid));
