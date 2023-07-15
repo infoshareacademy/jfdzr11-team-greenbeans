@@ -31,10 +31,9 @@ const Home = () => {
       );
       const userName = `${user[0].name}`;
 
-      const isAdmin = filteredData.filter(
-        (user) => user.isAdmin === currentUser.isAdmin
-      );
-      setAdmin(isAdmin);
+      console.log(user);
+      setAdmin(user[0].isAdmin);
+
       console.log(userName);
       setUser(userName);
     } catch {
