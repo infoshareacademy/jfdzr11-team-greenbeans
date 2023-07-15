@@ -10,6 +10,7 @@ import {
   ContactUs,
   Terms,
   Faq,
+  Messages,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -51,6 +52,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />}></Route>
         <Route path="/terms" element={<Terms />}></Route>
         <Route path="/contactus" element={<ContactUs />}></Route>
+        <Route path="/messages" element={<Messages />}></Route>
       </Routes>
       </HeartsContext.Provider>
     </>

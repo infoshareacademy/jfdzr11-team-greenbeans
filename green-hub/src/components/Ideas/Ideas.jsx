@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createRef } from "react";
 import { Navbar, Footer } from "../index";
 import { db } from "../../config/firebase.js";
 import {
@@ -14,7 +14,10 @@ import {
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./Ideas.module.css";
+import "./Ideas.css";
 import useAuth from "../../context/AuthContext";
+import {TransitionGroup, CSSTransition} from "react-transition-group"
+import "./Ideas.css"
 
 const Ideas = () => {
 
@@ -24,7 +27,7 @@ const Ideas = () => {
 	const { currentUser } = useAuth();
 
 	// POBIERANIE USERÓW
-		const getUserName = async () => {
+	const getUserName = async () => {
 		try {
 			const userData = await getDoc(doc(db, "users", currentUser?.uid));
 			const userName = `${userData.data().name} ${userData.data().lastName}`;
@@ -47,6 +50,7 @@ const Ideas = () => {
 	const getIdeasFromSnapshot = (querySnapshot) => {
 		return querySnapshot.docs.map((doc) => ({
 			id: doc.id,
+			nodeRef: createRef(null),
 			...doc.data(),
 		}));
 	};
@@ -54,7 +58,9 @@ const Ideas = () => {
 	const dbListener = (cb) => onSnapshot(q, cb);
 
 	useEffect(() => {
-		dbListener((querySnapshot) => setIdea(getIdeasFromSnapshot(querySnapshot)));
+		dbListener((querySnapshot) =>
+			setIdea(getIdeasFromSnapshot(querySnapshot))
+		);
 	}, []);
 
 	// funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
@@ -66,6 +72,7 @@ const Ideas = () => {
 			auth: currentUser.uid,
 			totalLikes: 0,
 			usersLikes: [],
+			nodeRef: createRef(null)
 		};
 		e.target.reset();
 		return newIdea;
@@ -90,6 +97,8 @@ const Ideas = () => {
 			}
 		}
 	};
+
+	console.log("idea ", idea);
 
   return (
     <div className={styles.ideas}>
@@ -136,11 +145,14 @@ const Ideas = () => {
         </form> 
         : null
         } 
+		
         {idea
-          ? idea.map((idea) => {
+          ? <ul><TransitionGroup>{idea.map((idea) => {
               const date = idea?.date?.toDate().toDateString();
               return (
-                <IdeaCard
+				<CSSTransition key={idea.id} timeout={500} classNames="item" nodeRef={idea.nodeRef}>
+					<li ref={idea.nodeRef}>
+					<IdeaCard
                   key={idea.id}
                   id={idea.id}
                   user={idea.user}
@@ -150,9 +162,14 @@ const Ideas = () => {
                   totalLikes={idea.totalLikes}
                   usersLikes={idea.usersLikes}
                 />
+					</li>
+                
+				</CSSTransition>
+				
               );
-            })
+            })}</TransitionGroup></ul>
           : null}
+		
       </main>
       <Footer />
     </div>

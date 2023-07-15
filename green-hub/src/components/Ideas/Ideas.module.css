@@ -96,6 +96,15 @@
   display: flex;
 }
 
+.ideas ul, .ideas li {
+  margin: 0;
+  padding: 0;
+}
+
+.ideas li {
+  list-style: none;
+}
+
 @media (max-width: 420px) {
   .ideas h1 {
       letter-spacing: 1rem;
