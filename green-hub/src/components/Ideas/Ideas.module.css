@@ -92,8 +92,17 @@
   text-align: center;
 }
 
-.ideas p + div {
+.ideas .paraWithImg {
   display: flex;
+}
+
+.ideas ul, .ideas li {
+  margin: 0;
+  padding: 0;
+}
+
+.ideas li {
+  list-style: none;
 }
 
 @media (max-width: 420px) {
@@ -101,7 +110,7 @@
       letter-spacing: 1rem;
   }
 
-  .ideas p + div {
+  .ideas .paraWithImg {
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;

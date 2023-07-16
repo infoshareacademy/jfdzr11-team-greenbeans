@@ -6,7 +6,7 @@ const DisplayPoints = () => {
   const { userPoints } = UseUserPoints();
   // console.log(userPoints);
   if (isGuest == false) {
-    return <div>{<p>Your points {userPoints}</p>}</div>;
+    return <div>{<p>Your points: {userPoints}</p>}</div>;
   }
 };
 

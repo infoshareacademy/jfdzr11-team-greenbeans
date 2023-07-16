@@ -1,116 +1,104 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, createRef } from "react";
 import { Navbar, Footer } from "../index";
 import { db } from "../../config/firebase.js";
 import {
-  Timestamp,
-  addDoc,
-  // getDocs,
-  collection,
-  orderBy,
-  onSnapshot,
-  query,
-  getDoc,
-  doc
+	Timestamp,
+	addDoc,
+	collection,
+	orderBy,
+	onSnapshot,
+	query,
+	getDoc,
+	doc,
 } from "firebase/firestore";
 import { Toaster, toast } from "react-hot-toast";
 import IdeaCard from "../IdeaCard/IdeaCard";
 import styles from "./Ideas.module.css";
+import "./Ideas.css";
 import useAuth from "../../context/AuthContext";
+import {TransitionGroup, CSSTransition} from "react-transition-group"
+import "./Ideas.css"
 
 const Ideas = () => {
-  const [idea, setIdea] = useState([]);
-  const [user, setUser] = useState('')
-  const ideasCollectionRef = collection(db, "ideas");
-  // const usersCollectionRef = collection(db, "users")
-  const { currentUser } = useAuth();
 
-  // POBIERANIE USERÓW
-  // const getUser = async () => {
-  //   try {
-  //     const data = await getDocs(usersCollectionRef);
-  //     const filteredData = data.docs.map((doc) => ({
-  //       ...doc.data()
-  //     }))
-  //     console.log('fileteredData: ', filteredData)
-  //     const userData = filteredData?.filter(el => el.email === currentUser.email)
-  //     console.log('user: ', userData, 'currentUser: ', currentUser)
-  //     const userName = `${userData[0].name} ${userData[0].lastName}`
-  //     console.log("user - czy jesteś tu: ", userName)
-  //     setUser(userName);
-  //   } catch (error) {
-  //     console.log("no user here", currentUser);
-  //     console.error(error)
-  //   }
-  // }
+	const [idea, setIdea] = useState([]);
+	const [user, setUser] = useState("");
+	const ideasCollectionRef = collection(db, "ideas");
+	const { currentUser } = useAuth();
 
+	// POBIERANIE USERÓW
+	const getUserName = async () => {
+		try {
+			const userData = await getDoc(doc(db, "users", currentUser?.uid));
+			const userName = `${userData.data().name} ${userData.data().lastName}`;
+			setUser(userName);
+		} catch (error) {
+			console.log("no user here");
+			console.error(error);
+		}
+	};
 
+	useEffect(() => {
+		if (currentUser) {
+			getUserName();
+		}
+	}, [currentUser]);
 
-  const getUserName = async () => {
-    try {
-      const userData = await getDoc(doc(db, "users", currentUser?.uid))
-      const userName = `${userData.data().name} ${userData.data().lastName}`
-      setUser(userName)
-    } catch (error) {
-      console.log("no user here");
-      console.error(error)
-    }
-  }
+	// WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
+	const q = query(ideasCollectionRef, orderBy("date", "desc"));
 
-  useEffect(() => {
-    if(currentUser) {getUserName()};
-   }, [currentUser])
+	const getIdeasFromSnapshot = (querySnapshot) => {
+		return querySnapshot.docs.map((doc) => ({
+			id: doc.id,
+			nodeRef: createRef(null),
+			...doc.data(),
+		}));
+	};
 
-  // WYŚWIETLANIE POMYSŁÓW UŻYTKOWNIKÓW
-  const q = query(ideasCollectionRef, orderBy("date", "desc"));
+	const dbListener = (cb) => onSnapshot(q, cb);
 
-  const getIdeasFromSnapshot = (querySnapshot) => {
-    return querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-  };
+	useEffect(() => {
+		dbListener((querySnapshot) =>
+			setIdea(getIdeasFromSnapshot(querySnapshot))
+		);
+	}, []);
 
-  const dbListener = (cb) => onSnapshot(q, cb);
+	// funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
+	const getNewIdea = (e) => {
+		const newIdea = {
+			user: user,
+			idea: e.target.idea.value,
+			date: Timestamp.fromDate(new Date()),
+			auth: currentUser.uid,
+			totalLikes: 0,
+			usersLikes: [],
+			nodeRef: createRef(null)
+		};
+		e.target.reset();
+		return newIdea;
+	};
 
-  useEffect(() => {
-    dbListener((querySnapshot) => setIdea(getIdeasFromSnapshot(querySnapshot)));
-  }, []);
+	// DODAWANIE NOWEGO POMYSŁU
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const idea = getNewIdea(e);
 
-  // funkcja do stworzenia obiektu z nowym pomysłem przesłanym przez użytkownika
-  const getNewIdea = (e) => {
-    const newIdea = {
-      user: user,
-      idea: e.target.idea.value,
-      date: Timestamp.fromDate(new Date()),
-      auth: currentUser.uid,
-      totalLikes: 0,
-      usersLikes: []
-    };
-    e.target.reset();
-    console.log('to czego szukam: ', user)
-    return newIdea;
-  };
+		if (!idea.idea) {
+			toast.error(
+				"I can't read in your mind 🥺 please write down your idea in field below 😃"
+			);
+		} else {
+			try {
+				await addDoc(ideasCollectionRef, idea);
+				toast.success("New idea added! 💡");
+			} catch (error) {
+				console.log(error);
+				toast.error("Something went wrong! Please try again!");
+			}
+		}
+	};
 
-  // DODAWANIE NOWEGO POMYSŁU
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const idea = getNewIdea(e);
-    console.log(idea.idea, currentUser);
-
-    if (!idea.idea) {
-      toast.error(
-        "I can't read in your mind 🥺 please write down your idea in field below 😃"
-      );
-    } else {
-      try {
-        await addDoc(ideasCollectionRef, idea);
-        toast.success("New idea added! 💡");
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong! Please try again!");
-      }
-    }
-  };
+	console.log("idea ", idea);
 
   return (
     <div className={styles.ideas}>
@@ -132,20 +120,20 @@ const Ideas = () => {
           planet in this way, we will consider adding this activity in the
           Points section.
         </p>
-        <div>
+        <div className={styles.paraWithImg}>
         <div className={styles.imagesPack}>
-          <img src="../../../assets/images/page-ideas/tree-12.png" alt="" />
-          <img src="../../../assets/images/page-ideas/tree-11.png" alt="" />
-          <img src="../../../assets/images/page-ideas/bush.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/tree-12.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/tree-11.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/bush.png" alt="" />
         </div>
         <p>On behalf of plants, animals and the whole earth - THANK YOU!</p>
         <div className={styles.imagesPack}>
-          <img src="../../../assets/images/page-ideas/rabbit.png" alt="" />
-          <img src="../../../assets/images/page-ideas/fox.png" alt="" />
-          <img src="../../../assets/images/page-ideas/dolphin.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/rabbit.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/fox.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/dolphin.png" alt="" />
         </div>
         </div>
-        <img src="../../../assets/images/page-ideas/save.png" />
+        <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/save.png" />
         {currentUser?.uid ? <form onSubmit={handleSubmit} className={styles.submit}>
           <textarea
             name="idea"
@@ -157,11 +145,14 @@ const Ideas = () => {
         </form> 
         : null
         } 
+		
         {idea
-          ? idea.map((idea) => {
+          ? <ul><TransitionGroup>{idea.map((idea) => {
               const date = idea?.date?.toDate().toDateString();
               return (
-                <IdeaCard
+				<CSSTransition key={idea.id} timeout={500} classNames="item" nodeRef={idea.nodeRef}>
+					<li ref={idea.nodeRef}>
+					<IdeaCard
                   key={idea.id}
                   id={idea.id}
                   user={idea.user}
@@ -171,9 +162,14 @@ const Ideas = () => {
                   totalLikes={idea.totalLikes}
                   usersLikes={idea.usersLikes}
                 />
+					</li>
+                
+				</CSSTransition>
+				
               );
-            })
+            })}</TransitionGroup></ul>
           : null}
+		
       </main>
       <Footer />
     </div>

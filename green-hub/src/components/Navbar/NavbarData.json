@@ -1,22 +1,22 @@
 [
 	{
 		"path": "/articles",
-		"icon": "../../../assets/images/page-main/copywriting.png",
+		"icon": "/jfdzr11-team-greenbeans/assets/images/page-main/copywriting.png",
 		"title": "Articles"
 	},
 	{
 		"path": "/getpoints",
-		"icon": "../../../assets/images/page-main/heart.png",
+		"icon": "/jfdzr11-team-greenbeans/assets/images/page-main/heart.png",
 		"title": "Points"
 	},
 	{
 		"path": "/newideas",
-		"icon": "../../../assets/images/page-main/idea.png",
+		"icon": "/jfdzr11-team-greenbeans/assets/images/page-main/idea.png",
 		"title": "Ideas"
 	},
 	{
 		"path": "/prizes",
-		"icon": "../../../assets/images/page-main/trophy.png",
+		"icon": "/jfdzr11-team-greenbeans/assets/images/page-main/trophy.png",
 		"title": "Prizes"
 	}
 ]
