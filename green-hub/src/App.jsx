@@ -15,10 +15,28 @@ import {
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Prizes from "./components/Prizes/Prizes";
+import {HeartsContext} from "./context/HeartsContext";
+import { useState,useEffect} from 'react';
+import useAuth from "./context/AuthContext";
+import { db } from "./config/firebase";
+import { doc, collection,setDoc,deleteDoc ,getDoc,query,getDocs,where} from "firebase/firestore";
 
 function App() {
+      const { currentUser } = useAuth();
+    const [clickedHearts, setClickedHearts] = useState([]);
+    const [additionalPoints, setAdditionalPoints] = useState(0);
+    const hearts = {clickedHearts, setClickedHearts,additionalPoints, setAdditionalPoints};
+     useEffect(() => {
+   if (currentUser?.uid){
+	const q = query(collection(db, "users_hearts"), where("uid", "==", currentUser.uid));
+	getDocs(q).then(({docs}) => {
+	    setClickedHearts(docs.map(single_row => single_row.data().aid));
+	});
+      }
+  },[currentUser]);
   return (
     <>
+    <HeartsContext.Provider value={hearts}>
       <Toaster />
 
       <Routes>
@@ -37,6 +55,7 @@ function App() {
         <Route path="/contactus" element={<ContactUs />}></Route>
         <Route path="/messages" element={<Messages />}></Route>
       </Routes>
+      </HeartsContext.Provider>
     </>
   );
 }
