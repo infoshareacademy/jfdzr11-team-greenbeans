@@ -1,10 +1,10 @@
 import styles from "./GetPointsBox.module.css";
 import useAuth from "../../context/AuthContext";
 import Modal from "react-modal";
-import { useState } from "react";
-import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
-import { doc, updateDoc } from "@firebase/firestore";
+import { useState,useContext } from "react";
+import { doc, updateDoc,getDoc } from "@firebase/firestore";
 import { db } from "../../config/firebase";
+import {HeartsContext} from "../../context/HeartsContext";
 
 const GetPointsBox = ({
 	icon,
@@ -16,8 +16,8 @@ const GetPointsBox = ({
 }) => {
 	const [visible, setVisible] = useState(false);
 	const [score, setScore] = useState(0);
-	const { userPoints } = UseUserPoints();
 	const { currentUser } = useAuth();
+	const {setAdditionalPoints} = useContext(HeartsContext);
 
 	const closeBox = () => {
 		setVisible(false);
@@ -26,11 +26,17 @@ const GetPointsBox = ({
 
 	const updateUserPoints = async (e, id) => {
 		e.preventDefault();
-		const updatedPoints = Number(userPoints) + Number(score) * Number(scale);
+		const updatedPoints = Number(score) * Number(scale);
 		const docRef = doc(db, "users", id);
 
 		try {
-			await updateDoc(docRef, { points: updatedPoints });
+			var docobj = await getDoc(docRef);
+			var currentPoints = 0;
+			if(docobj.exists){
+				currentPoints = docobj.data().points;
+			}
+			await updateDoc(docRef, { points: currentPoints+updatedPoints });
+			setAdditionalPoints(updatedPoints);
 			closeBox();
 		} catch {
 			console.log("nie udało się");
@@ -48,7 +54,7 @@ const GetPointsBox = ({
 				<p>{scaler}</p>
 				<span>need more info? click here</span>
 				<button>
-					<img src="../../../assets/images/page-points/about-us.png" />
+					<img src="/jfdzr11-team-greenbeans/assets/images/page-points/about-us.png" />
 				</button>
 			</div>
 			{isButton && (
@@ -74,7 +80,7 @@ const GetPointsBox = ({
 					✖
 				</button>
 				<img
-					src="../../../assets/images/page-main/heart.png"
+					src="/jfdzr11-team-greenbeans/assets/images/page-main/heart.png"
 					className={styles.background}
 				/>
 

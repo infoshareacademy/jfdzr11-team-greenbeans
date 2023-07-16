@@ -1,5 +1,6 @@
 {
   "name": "green-hub",
+  "homepage": "https://infoshareacademy.github.io/jfdzr11-team-greenbeans",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,13 +8,16 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@firebase/firestore": "^3.12.2",
     "cypress": "^12.17.1",
     "eslint-plugin-cypress": "^2.13.3",
     "firebase": "^9.22.2",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",

@@ -17,7 +17,7 @@
 .tree {
 	width: 7rem;
 	height: 7rem;
-	background-image: url("../../../assets/images/page-main/tree-11.png");
+	background-image: url("/assets/images/page-main/tree-11.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -30,7 +30,7 @@
 .tree1 {
 	width: 5rem;
 	height: 5rem;
-	background-image: url("../../../assets/images/page-main/tree-12.png");
+	background-image: url("/assets/images/page-main/tree-12.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -43,7 +43,7 @@
 .tree2 {
 	width: 7rem;
 	height: 7rem;
-	background-image: url("../../../assets/images/page-main/tree-12.png");
+	background-image: url("/assets/images/page-main/tree-12.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -56,7 +56,7 @@
 .sun {
 	width: 6rem;
 	height: 6rem;
-	background-image: url("../../../assets/images/page-main/sun.png");
+	background-image: url("/assets/images/page-main/sun.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -73,7 +73,7 @@
 .plant {
 	width: 4rem;
 	height: 4rem;
-	background-image: url("../../../assets/images/page-main/plant-11.png");
+	background-image: url("/assets/images/page-main/plant-11.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -86,7 +86,7 @@
 .cloud {
 	width: 7rem;
 	height: 7rem;
-	background-image: url("../../../assets/images/page-main/cloud.png");
+	background-image: url("/assets/images/page-main/cloud.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -115,7 +115,7 @@
 .trash {
 	width: 9rem;
 	height: 9rem;
-	background-image: url("../../../assets/images/page-main/trash.png");
+	background-image: url("/assets/images/page-main/trash.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -128,7 +128,7 @@
 .garbage {
 	width: 7rem;
 	height: 7rem;
-	background-image: url("../../../assets/images/page-main/garbage-bag.png");
+	background-image: url("/assets/images/page-main/garbage-bag.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -141,7 +141,7 @@
 .garbage1 {
 	width: 5rem;
 	height: 5rem;
-	background-image: url("../../../assets/images/page-main/garbage-bag.png");
+	background-image: url("/assets/images/page-main/garbage-bag.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -154,7 +154,7 @@
 .garbage2 {
 	width: 6rem;
 	height: 6rem;
-	background-image: url("../../../assets/images/page-main/garbage-bag.png");
+	background-image: url("/assets/images/page-main/garbage-bag.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;
@@ -167,7 +167,7 @@
 .bin {
 	width: 6rem;
 	height: 6rem;
-	background-image: url("../../../assets/images/page-main/recycle-bin.png");
+	background-image: url("/assets/images/page-main/recycle-bin.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	position: absolute;

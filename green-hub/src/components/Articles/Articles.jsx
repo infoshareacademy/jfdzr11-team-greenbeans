@@ -1,32 +1,44 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./Articles.module.css";
 import jsonData from "../../components/Articles/data.json";
-import heart from "../../../assets/images/page-articles/heart.png";
-import pinkHeart from "../../../assets/images/page-articles/pinkheart.png";
+import heart from "/assets/images/page-articles/heart.png";
+import pinkHeart from "/assets/images/page-articles/pinkheart.png";
 import Navbar from "../Navbar/Navbar";
 import useAuth from "../../context/AuthContext";
 import Footer from "../Footer/Footer";
+import { db } from "../../config/firebase";
+import { doc, collection,setDoc,deleteDoc ,getDoc,query,getDocs,where} from "firebase/firestore";
+import {HeartsContext} from "../../context/HeartsContext";
 
 const Articles = () => {
   const [articleData, setArticleData] = useState(null);
-  const [clickedHearts, setClickedHearts] = useState([]);
+  
+  const {clickedHearts, setClickedHearts} = useContext(HeartsContext);
   const { currentUser } = useAuth();
 
   useEffect(() => {
     setArticleData(jsonData);
   }, []);
-
-  const handleHeartClick = (articleId) => {
-    if (clickedHearts.includes(articleId)) {
-      setClickedHearts(clickedHearts.filter((id) => id !== articleId));
-    } else {
+ 
+  
+  const handleHeartClick = async (articleId) => {
+      
+      const doc_id = `${articleId}_${currentUser.uid}`;
+      const docRef = doc(db,  "users_hearts", doc_id);
+      const docobj = await getDoc(docRef);
+      if (!docobj.exists()) {
+     
+	await setDoc(docRef, {
+	uid: currentUser.uid,
+	aid: articleId
+      });
       setClickedHearts([...clickedHearts, articleId]);
-    }
+  }
   };
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className={styles.container}>
         <h1 className={styles.title}>articles</h1>
         <p className={styles.subtitle}>be aware and get some points</p>
