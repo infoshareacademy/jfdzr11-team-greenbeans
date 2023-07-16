@@ -105,8 +105,8 @@ const ContactUs = () => {
             />
             <button type="submit">SEND MESSAGE</button>
           </form>
-          <button type="submit" onClick={handleCancel}>
-            Return
+          <button className={styles.return}type="submit" onClick={handleCancel}>
+            RETURN
           </button>
         </div>
       </div>

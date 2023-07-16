@@ -131,8 +131,8 @@ const Register = () => {
               />
               <button type="submit">REGISTER</button>
             </form>
-            <button type="submit" onClick={handleCancel}>
-              Return
+            <button className={styles.return} type="submit" onClick={handleCancel}>
+              RETURN
             </button>
           </div>
         </div>
