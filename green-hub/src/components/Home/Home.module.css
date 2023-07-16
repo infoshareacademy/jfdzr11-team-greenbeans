@@ -190,6 +190,26 @@ a {
 	background-size: cover;
 }
 
+.question {
+	background-image: url("/assets/images/page-main/question.png");
+	width: 3rem;
+	height: 3rem;
+	background-size: cover;
+	background-position: center;
+	border: none;
+	background-color: transparent;
+	position: absolute;
+	top: 1rem;
+	right: 2rem;
+	animation: pulse infinite 3s;
+	transition: background-image 1s;
+}
+
+.question:hover { 
+	cursor: pointer;
+	background-image: url("/assets/images/page-main/question-1.png");
+	}
+
 @media (max-width: 1000px) {
 	div.cloud2 {
 		left: 9rem;
@@ -249,5 +269,17 @@ a {
 @media (max-width: 300px) {
 	.home_container h1 {
 		margin: 50% 0 1.5rem 0;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
 	}
 }

@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import Background from "../Background/Background";
 import Footer from "../Footer/Footer";
 import DisplayPoints from "../DisplayPoints/DisplayPoints";
+import HomeInfoBox from "../HomeInfoBox/HomeInfoBox";
 import { UseUserPoints } from "../Utils/UseUserPoints/UseUserPoints";
 import { toast } from "react-hot-toast";
 
@@ -18,6 +19,7 @@ const Home = () => {
   const { logout, currentUser } = useAuth();
   const [user, setUser] = useState("");
   const [admin, setAdmin] = useState(false);
+  const [visible, setVisible] = useState(false);
   const usersCollectionRef = collection(db, "users");
 
   const getUser = async () => {
@@ -67,6 +69,7 @@ const Home = () => {
   };
 
   return (
+    <>
     <div className={`${styles.home_container} ${getBackgroundImage()}`}>
       <div className={styles.login_holder}>
         {!currentUser?.uid ? (
@@ -81,6 +84,7 @@ const Home = () => {
                 <button className={styles.registerbtn}>Register</button>
               </div>
             </Link>
+            <button className={styles.question} onClick={() => {setVisible(true)}}></button>
           </>
         ) : (
           <Link to="/">
@@ -141,7 +145,10 @@ const Home = () => {
       </div>
       <Background />
       <Footer />
+      
     </div>
+    <HomeInfoBox close={() => {setVisible(false)}} visible={visible} />
+    </>
   );
 };
 

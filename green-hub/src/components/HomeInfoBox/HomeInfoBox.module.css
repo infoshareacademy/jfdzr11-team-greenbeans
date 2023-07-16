@@ -1,0 +1,55 @@
+/* modal */
+.info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: calc(50% - 9rem);
+	right: calc(50% - 12.5rem);
+	width: 25rem;
+	height: 18rem;
+	background-color: #dce2e4;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+    z-index: 3;
+    padding: 1rem;
+}
+
+.info p {
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 300;
+	line-height: 1.5rem;
+	margin: 0.5rem 0;
+}
+
+.info button.cancel {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background-color: transparent;
+	border: none;
+}
+
+.info button.cancel:hover {
+	cursor: pointer;
+}
+
+.info ul, .info li {
+    padding: 0;
+    margin: 0;
+}
+
+.info li {
+    list-style: none;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.info a {
+    font-weight: 700;
+    color: #545B60;
+    text-transform: uppercase;
+}
