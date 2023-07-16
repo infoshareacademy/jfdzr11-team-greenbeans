@@ -49,7 +49,7 @@ const PrizesBox = ({ logo, prize, points, shop }) => {
 			) : (
 				<button className={`${styles.box} ${styles.disabled}`}>
 					<img
-						src="../../../assets/images/page-prize/lock.png"
+						src="/jfdzr11-team-greenbeans/assets/images/page-prize/lock.png"
 						className={styles.lock}
 					/>
 					<img src={logo} />
@@ -69,7 +69,7 @@ const PrizesBox = ({ logo, prize, points, shop }) => {
 					✖
 				</button>
 				<img
-					src="../../../assets/images/page-main/trophy.png"
+					src="/jfdzr11-team-greenbeans/assets/images/page-main/trophy.png"
 					className={styles.background}
 				/>
 
@@ -91,7 +91,7 @@ const PrizesBox = ({ logo, prize, points, shop }) => {
 				)}
 				{isActivated && (
 					<div className={styles.activated}>
-						<img src="../../../assets/images/page-prize/code.png" />
+						<img src="/jfdzr11-team-greenbeans/assets/images/page-prize/code.png" />
 						<p className={styles.code}>{uuidv4()}</p>
 					</div>
 				)}

@@ -70,8 +70,8 @@ const Login = () => {
               <p>You do not have an account yet?</p>
               <Link to="/register">Register now!</Link>
             </form>
-            <button type="submit" onClick={handleCancel}>
-              Return
+            <button className={styles.return} type="submit" onClick={handleCancel}>
+              RETURN
             </button>
           </div>
         </div>

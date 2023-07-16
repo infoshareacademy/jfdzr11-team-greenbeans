@@ -122,18 +122,18 @@ const Ideas = () => {
         </p>
         <div className={styles.paraWithImg}>
         <div className={styles.imagesPack}>
-          <img src="../../../assets/images/page-ideas/tree-12.png" alt="" />
-          <img src="../../../assets/images/page-ideas/tree-11.png" alt="" />
-          <img src="../../../assets/images/page-ideas/bush.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/tree-12.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/tree-11.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/bush.png" alt="" />
         </div>
         <p>On behalf of plants, animals and the whole earth - THANK YOU!</p>
         <div className={styles.imagesPack}>
-          <img src="../../../assets/images/page-ideas/rabbit.png" alt="" />
-          <img src="../../../assets/images/page-ideas/fox.png" alt="" />
-          <img src="../../../assets/images/page-ideas/dolphin.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/rabbit.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/fox.png" alt="" />
+          <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/dolphin.png" alt="" />
         </div>
         </div>
-        <img src="../../../assets/images/page-ideas/save.png" />
+        <img src="/jfdzr11-team-greenbeans/assets/images/page-ideas/save.png" />
         {currentUser?.uid ? <form onSubmit={handleSubmit} className={styles.submit}>
           <textarea
             name="idea"
